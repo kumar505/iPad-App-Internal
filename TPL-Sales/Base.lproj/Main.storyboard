@@ -67,13 +67,13 @@
             <objects>
                 <pageViewController storyboardIdentifier="pageControl" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="20" navigationOrientation="horizontal" spineLocation="none" id="gs9-gE-qZZ" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="eEe-Xk-Ybd" kind="show" id="LId-da-TIU"/>
-                        <segue destination="E6G-hp-3ZB" kind="show" id="Kqc-1I-PiF"/>
+                        <segue destination="eEe-Xk-Ybd" kind="show" identifier="first" id="LId-da-TIU"/>
+                        <segue destination="E6G-hp-3ZB" kind="show" identifier="second" id="Kqc-1I-PiF"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xeY-KV-1ya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="826" y="1421"/>
+            <point key="canvasLocation" x="826" y="2174"/>
         </scene>
         <!--First Page View Controller-->
         <scene sceneID="Xam-pE-5UC">
@@ -94,7 +94,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dFQ-hI-5Xy" firstAttribute="centerX" secondItem="tIp-W7-Nva" secondAttribute="centerX" id="430-9F-jzg"/>
                             <constraint firstItem="dFQ-hI-5Xy" firstAttribute="centerY" secondItem="tIp-W7-Nva" secondAttribute="centerY" id="GX0-GW-5Fk"/>
@@ -103,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Av-YC-bYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="124" y="2054"/>
+            <point key="canvasLocation" x="-471" y="3561"/>
         </scene>
         <!--Second Page View Controller-->
         <scene sceneID="Sy0-VX-A7W">
@@ -124,7 +124,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="E0r-e7-taX" firstAttribute="centerY" secondItem="Oy2-lP-mtt" secondAttribute="centerY" id="cUI-Zr-MUF"/>
                             <constraint firstItem="E0r-e7-taX" firstAttribute="centerX" secondItem="Oy2-lP-mtt" secondAttribute="centerX" id="kD3-9u-1xU"/>
@@ -133,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hiv-c2-wtG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="826" y="2054"/>
+            <point key="canvasLocation" x="821" y="3561"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6gI-83-LUQ">
@@ -156,7 +156,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dL9-og-89f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="123.63281249999999" y="764.71449487554901"/>
+            <point key="canvasLocation" x="-476" y="765"/>
         </scene>
     </scenes>
     <resources>

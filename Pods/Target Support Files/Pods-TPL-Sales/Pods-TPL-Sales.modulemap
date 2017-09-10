@@ -1,0 +1,6 @@
+framework module Pods_TPL_Sales {
+  umbrella header "Pods-TPL-Sales-umbrella.h"
+
+  export *
+  module * { export * }
+}
