@@ -1,14 +1,14 @@
 //
-//  FirstPageViewController.swift
+//  PaymentViewController.swift
 //  TPL-Sales
 //
-//  Created by Challa Karthik on 10/09/17.
+//  Created by Challa Karthik on 11/09/17.
 //  Copyright © 2017 aezion. All rights reserved.
 //
 
 import UIKit
 
-class FirstPageViewController: UIViewController {
+class PaymentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,14 +1,14 @@
 //
-//  SecondPageViewController.swift
+//  InstallOptionViewController.swift
 //  TPL-Sales
 //
-//  Created by Challa Karthik on 10/09/17.
+//  Created by Challa Karthik on 11/09/17.
 //  Copyright © 2017 aezion. All rights reserved.
 //
 
 import UIKit
 
-class SecondPageViewController: UIViewController {
+class InstallOptionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

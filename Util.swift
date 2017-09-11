@@ -48,10 +48,10 @@ func rightUserBarButtonViewItem(title: String, subTitle: String, image: UIImage?
 
 // MARK: BarButtonItem with custom button
 
-func formBarButtonItem(title: String, imageName: String, bgColor: UIColor, semantic: UISemanticContentAttribute? = .forceLeftToRight) -> UIBarButtonItem {
+func formBarButtonItem(title: String, imageName: String, bgColor: UIColor, semantic: UISemanticContentAttribute? = .forceLeftToRight, width: CGFloat? = 100) -> UIBarButtonItem {
     
     let button = UIButton(type: .custom)
-    button.frame = CGRect(x: 0, y: 0, width: 100, height: 30)
+    button.frame = CGRect(x: 0, y: 0, width: width!, height: 30)
     button.layer.cornerRadius = 15
     button.semanticContentAttribute = semantic!
     switch semantic! {
@@ -72,9 +72,9 @@ func formBarButtonItem(title: String, imageName: String, bgColor: UIColor, seman
 
 // MARK: ToolBar items
 
-func formatToolBarItems(isPrevious: Bool? = false) -> [UIBarButtonItem] {
+func formatToolBarItems(isPrevious: Bool? = false, nextTitle: String? = "Next", width: CGFloat? = 100) -> [UIBarButtonItem] {
     
-    let next = formBarButtonItem(title: "Next", imageName: "next", bgColor: ColorConstants.barBlue, semantic: UISemanticContentAttribute.forceRightToLeft)
+    let next = formBarButtonItem(title: nextTitle!, imageName: "next", bgColor: ColorConstants.barBlue, semantic: UISemanticContentAttribute.forceRightToLeft, width: width)
     let previous = formBarButtonItem(title: "Previous", imageName: "previous", bgColor: ColorConstants.barBlue)
     let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     let cancel = formBarButtonItem(title: "Cancel", imageName: "cancel", bgColor: ColorConstants.buttonGray)

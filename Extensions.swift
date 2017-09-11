@@ -58,6 +58,7 @@ extension UINavigationController {
     
     func formatUI() {
         
+        self.navigationBar.isTranslucent = false
         self.navigationBar.barTintColor = ColorConstants.barBlue
         self.navigationBar.tintColor = UIColor.white
         self.navigationBar.titleTextAttributes = [
