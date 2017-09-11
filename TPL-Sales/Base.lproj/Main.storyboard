@@ -109,10 +109,10 @@
                                 <rect key="frame" x="20" y="10" width="984" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deZ-kk-Un0">
-                                        <rect key="frame" x="20" y="5" width="150" height="30"/>
+                                        <rect key="frame" x="20" y="5" width="200" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="ie5-eH-WQZ"/>
+                                            <constraint firstAttribute="width" constant="200" id="ie5-eH-WQZ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                         <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>

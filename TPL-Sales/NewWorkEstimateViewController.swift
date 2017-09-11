@@ -88,9 +88,11 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
     @IBAction func performSelectedType(_ sender: UIButton) {
         
         if isClicked {
+            selectType.setTitle("Select Type", for: .normal)
             persistNavigation(hidden: true)
             isClicked = false
         } else {
+            selectType.setTitle("CH-New Installation", for: .normal)
             persistNavigation(hidden: false)
             isClicked = true
         }

@@ -80,10 +80,7 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         
         let currentIndex = pages.index(of: viewController)!
         if currentIndex == 0 {
-            self.toolbarItems = formatToolBarItems(isPrevious: false)
             return nil
-        } else {
-            self.toolbarItems = formatToolBarItems(isPrevious: true)
         }
         let previousIndex = abs((currentIndex - 1) % pages.count)
         return pages[previousIndex]
@@ -93,10 +90,7 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         
         let currentIndex = pages.index(of: viewController)!
         if currentIndex == pages.count - 1 {
-            self.toolbarItems = formatToolBarItems(isPrevious: true, nextTitle: "Save & Send", width: 150)
             return nil
-        } else {
-            self.toolbarItems = formatToolBarItems(isPrevious: true)
         }
         let nextIndex = abs((currentIndex + 1) % pages.count)
         return pages[nextIndex]
@@ -105,6 +99,13 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         
         pendingIndex = pages.index(of: pendingViewControllers.first!)
+        if pendingIndex == pages.count - 1 {
+            self.toolbarItems = formatToolBarItems(isPrevious: true, nextTitle: "Save & Send", width: 150)
+        } else if pendingIndex == 0 {
+            self.toolbarItems = formatToolBarItems(isPrevious: false)
+        } else {
+            self.toolbarItems = formatToolBarItems(isPrevious: true)
+        }
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
