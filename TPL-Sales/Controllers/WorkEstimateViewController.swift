@@ -42,7 +42,7 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         menuSegment.tintColor = UIColor.white
         menuSegment.backgroundColor = ColorConstants.barBlue
         
-        menuSegmentView.isHidden = true
+//        menuSegmentView.isHidden = true
         
         pageController.delegate = self
         pageController.dataSource = self

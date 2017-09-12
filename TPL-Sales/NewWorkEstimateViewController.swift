@@ -42,6 +42,7 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
         self.notesView.isHidden = true
         
         date.setTitle(formatDate(date: Date()), for: .normal)
+        persistNavigation(hidden: true)
     }
     
     // MARK: TableView delegates functions
@@ -80,6 +81,10 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
         cell.column2_Item2.text = custDetails[indexPath.row][1]
         cell.column3_Item2.text = custDetails[indexPath.row][2]
         cell.column4_Item2.text = custDetails[indexPath.row][3]
+        
+        if indexPath.row == custDetails.count - 1 {
+            cell.separatorInset = UIEdgeInsetsMake(0, cell.frame.size.width, 0, 0)
+        }
         return cell
     }
     
@@ -101,7 +106,8 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
     func persistNavigation(hidden: Bool) {
         self.notesView.isHidden = hidden
         if let parentVC = self.parent?.parent as? WorkEstimateViewController {
-            parentVC.menuSegmentView.isHidden = hidden
+//            parentVC.menuSegmentView.isHidden = hidden
+            parentVC.menuSegment.isHidden = hidden
             parentVC.navigationController?.toolbar.isHidden = hidden
         }
     }
