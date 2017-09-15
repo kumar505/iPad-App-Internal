@@ -26,6 +26,12 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pageController.delegate = self
+        pageController.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
         self.navigationController?.formatUI()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -42,10 +48,7 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         menuSegment.tintColor = UIColor.white
         menuSegment.backgroundColor = ColorConstants.barBlue
         
-//        menuSegmentView.isHidden = true
-        
-        pageController.delegate = self
-        pageController.dataSource = self
+        //        menuSegmentView.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

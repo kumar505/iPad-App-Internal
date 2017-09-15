@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5647EDA1F2F947F37EB0E1F2 /* Pods_TPL_SalesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B71AA93FE7561B912D670D5 /* Pods_TPL_SalesTests.framework */; };
+		9E0013EE1F6A978A00DE537F /* CustomerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0013ED1F6A978A00DE537F /* CustomerDataModel.swift */; };
+		9E0013F01F6AA86900DE537F /* ProductsContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0013EF1F6AA86900DE537F /* ProductsContentTableViewCell.swift */; };
 		9E4034401F63DCCD00EA6CA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E40343F1F63DCCD00EA6CA6 /* AppDelegate.swift */; };
 		9E4034451F63DCCD00EA6CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E4034431F63DCCD00EA6CA6 /* Main.storyboard */; };
 		9E4034481F63DCCD00EA6CA6 /* TPL_Sales.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E4034461F63DCCD00EA6CA6 /* TPL_Sales.xcdatamodeld */; };
@@ -133,6 +135,8 @@
 		6E80378FD66C811F60FA5212 /* Pods-TPL-Sales.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPL-Sales.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPL-Sales/Pods-TPL-Sales.release.xcconfig"; sourceTree = "<group>"; };
 		8B71AA93FE7561B912D670D5 /* Pods_TPL_SalesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TPL_SalesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9707F68A135742B265621993 /* Pods-TPL-Sales.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPL-Sales.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPL-Sales/Pods-TPL-Sales.debug.xcconfig"; sourceTree = "<group>"; };
+		9E0013ED1F6A978A00DE537F /* CustomerDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerDataModel.swift; sourceTree = "<group>"; };
+		9E0013EF1F6AA86900DE537F /* ProductsContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsContentTableViewCell.swift; sourceTree = "<group>"; };
 		9E40343C1F63DCCD00EA6CA6 /* TPL-Sales.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TPL-Sales.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E40343F1F63DCCD00EA6CA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E4034441F63DCCD00EA6CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -597,6 +601,8 @@
 		9EF9193E1F671AA200B1EE2C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9E0013EF1F6AA86900DE537F /* ProductsContentTableViewCell.swift */,
+				9E0013ED1F6A978A00DE537F /* CustomerDataModel.swift */,
 				9EF9193F1F6733A700B1EE2C /* CustHeaderTableViewCell.swift */,
 				9EF9193C1F671A7000B1EE2C /* FourColumnTableViewCell.swift */,
 			);
@@ -1011,8 +1017,10 @@
 				9E4034401F63DCCD00EA6CA6 /* AppDelegate.swift in Sources */,
 				9EF919351F6708B900B1EE2C /* ProductsViewController.swift in Sources */,
 				9EF9193D1F671A7000B1EE2C /* FourColumnTableViewCell.swift in Sources */,
+				9E0013F01F6AA86900DE537F /* ProductsContentTableViewCell.swift in Sources */,
 				9EF919401F6733A700B1EE2C /* CustHeaderTableViewCell.swift in Sources */,
 				9EF919331F67085500B1EE2C /* NewWorkEstimateViewController.swift in Sources */,
+				9E0013EE1F6A978A00DE537F /* CustomerDataModel.swift in Sources */,
 				9E4035171F63E16300EA6CA6 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
