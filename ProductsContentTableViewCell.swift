@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class ProductsContentTableViewCell: UITableViewCell {
+class ProductsContentTableViewCell: SwipeTableViewCell {
 
     @IBOutlet weak var productName: UIButton!
     @IBOutlet weak var location: UIButton!
@@ -32,5 +33,4 @@ class ProductsContentTableViewCell: UITableViewCell {
             self.contentView.backgroundColor = ColorConstants.yellow
         }
     }
-
 }

@@ -102,6 +102,8 @@
 		9E69C0981F6409BF002CEE7A /* pdf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E69C0941F6409BF002CEE7A /* pdf@2x.png */; };
 		9E69C0991F6409BF002CEE7A /* pdf@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E69C0951F6409BF002CEE7A /* pdf@3x.png */; };
 		9ED089751F64304A00C1EEDA /* WorkOrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED089741F64304A00C1EEDA /* WorkOrderTableViewController.swift */; };
+		9ED14FD31F6DA33C00E2A1DF /* AddProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED14FD21F6DA33C00E2A1DF /* AddProductsViewController.swift */; };
+		9ED14FD51F6DA36600E2A1DF /* AddProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED14FD41F6DA36600E2A1DF /* AddProductsTableViewCell.swift */; };
 		9EF919331F67085500B1EE2C /* NewWorkEstimateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF919321F67085500B1EE2C /* NewWorkEstimateViewController.swift */; };
 		9EF919351F6708B900B1EE2C /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF919341F6708B900B1EE2C /* ProductsViewController.swift */; };
 		9EF919371F670AF700B1EE2C /* InstallOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF919361F670AF700B1EE2C /* InstallOptionViewController.swift */; };
@@ -235,6 +237,8 @@
 		9E69C0941F6409BF002CEE7A /* pdf@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pdf@2x.png"; sourceTree = "<group>"; };
 		9E69C0951F6409BF002CEE7A /* pdf@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pdf@3x.png"; sourceTree = "<group>"; };
 		9ED089741F64304A00C1EEDA /* WorkOrderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderTableViewController.swift; sourceTree = "<group>"; };
+		9ED14FD21F6DA33C00E2A1DF /* AddProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductsViewController.swift; sourceTree = "<group>"; };
+		9ED14FD41F6DA36600E2A1DF /* AddProductsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductsTableViewCell.swift; sourceTree = "<group>"; };
 		9EF919321F67085500B1EE2C /* NewWorkEstimateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWorkEstimateViewController.swift; sourceTree = "<group>"; };
 		9EF919341F6708B900B1EE2C /* ProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		9EF919361F670AF700B1EE2C /* InstallOptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallOptionViewController.swift; sourceTree = "<group>"; };
@@ -280,7 +284,7 @@
 		9E4034331F63DCCD00EA6CA6 = {
 			isa = PBXGroup;
 			children = (
-				9EF9193E1F671AA200B1EE2C /* Models */,
+				9EF9193E1F671AA200B1EE2C /* Views */,
 				9E4035181F63E23100EA6CA6 /* Supporting-Files */,
 				9E4035151F63E14B00EA6CA6 /* Extensions */,
 				9E4034701F63DE1900EA6CA6 /* Images */,
@@ -558,6 +562,7 @@
 		9E4035141F63E08B00EA6CA6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9ED14FD21F6DA33C00E2A1DF /* AddProductsViewController.swift */,
 				9EF919361F670AF700B1EE2C /* InstallOptionViewController.swift */,
 				9EF919321F67085500B1EE2C /* NewWorkEstimateViewController.swift */,
 				9ED089741F64304A00C1EEDA /* WorkOrderTableViewController.swift */,
@@ -598,15 +603,16 @@
 			name = pdf;
 			sourceTree = "<group>";
 		};
-		9EF9193E1F671AA200B1EE2C /* Models */ = {
+		9EF9193E1F671AA200B1EE2C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9ED14FD41F6DA36600E2A1DF /* AddProductsTableViewCell.swift */,
 				9E0013EF1F6AA86900DE537F /* ProductsContentTableViewCell.swift */,
 				9E0013ED1F6A978A00DE537F /* CustomerDataModel.swift */,
 				9EF9193F1F6733A700B1EE2C /* CustHeaderTableViewCell.swift */,
 				9EF9193C1F671A7000B1EE2C /* FourColumnTableViewCell.swift */,
 			);
-			name = Models;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		EB8B9A2B31B2DEFBE5E17E41 /* Frameworks */ = {
@@ -923,10 +929,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TPL-Sales/Pods-TPL-Sales-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1008,6 +1016,7 @@
 			files = (
 				9E40351A1F63E28000EA6CA6 /* Constants.swift in Sources */,
 				9EF919371F670AF700B1EE2C /* InstallOptionViewController.swift in Sources */,
+				9ED14FD31F6DA33C00E2A1DF /* AddProductsViewController.swift in Sources */,
 				9ED089751F64304A00C1EEDA /* WorkOrderTableViewController.swift in Sources */,
 				9EF919391F670B0E00B1EE2C /* AdditionalInfoViewController.swift in Sources */,
 				9E40351C1F63EBCE00EA6CA6 /* Util.swift in Sources */,
@@ -1018,6 +1027,7 @@
 				9EF919351F6708B900B1EE2C /* ProductsViewController.swift in Sources */,
 				9EF9193D1F671A7000B1EE2C /* FourColumnTableViewCell.swift in Sources */,
 				9E0013F01F6AA86900DE537F /* ProductsContentTableViewCell.swift in Sources */,
+				9ED14FD51F6DA36600E2A1DF /* AddProductsTableViewCell.swift in Sources */,
 				9EF919401F6733A700B1EE2C /* CustHeaderTableViewCell.swift in Sources */,
 				9EF919331F67085500B1EE2C /* NewWorkEstimateViewController.swift in Sources */,
 				9E0013EE1F6A978A00DE537F /* CustomerDataModel.swift in Sources */,

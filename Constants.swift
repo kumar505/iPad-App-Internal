@@ -15,6 +15,7 @@ struct ColorConstants {
     static var bgGray = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
     static var buttonGray = UIColor(red: 167/255, green: 169/255, blue: 172/255, alpha: 1)
     static var yellow = UIColor(red: 253/255, green: 251/255, blue: 222/255, alpha: 1)
+    static var buttonYellow = UIColor(red: 246/255, green: 203/255, blue: 83/255, alpha: 1)
 }
 
 let products = "Products"

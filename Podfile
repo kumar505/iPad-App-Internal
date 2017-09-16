@@ -4,6 +4,9 @@ target 'TPL-Sales' do
 
   use_frameworks!
 
+  # Pod for showing left or right swipe buttons
+  pod 'SwipeCellKit'
+
   # Pod for showing spinners
   pod 'MBProgressHUD', '~> 1.0.0'
 
