@@ -14,6 +14,18 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: Outlets
     
     @IBOutlet weak var products: UITableView!
+    @IBOutlet weak var finalSubTotal: UILabel!
+    @IBOutlet weak var finalTax: UILabel!
+    @IBOutlet weak var firstYearGrandTotal: UILabel!
+    @IBOutlet weak var discountSwitch: UISwitch!
+    @IBOutlet weak var discountLabel: UILabel!
+    @IBOutlet weak var discountExpiryLabel: UILabel!
+    @IBOutlet weak var secondYearTotalPrice: UILabel!
+    @IBOutlet weak var finalDiscountedPrice: UILabel!
+    @IBOutlet weak var finalStorageFee: UILabel!
+    @IBOutlet weak var secondYearGrandTotal: UILabel!
+    @IBOutlet weak var disclaimer: UILabel!
+    @IBOutlet weak var pendingSale: UISwitch!
     
     // MARK: Internal variables
     
@@ -23,6 +35,27 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let discountLabelLength = discountLabel.text?.characters.count {
+            
+            let lastCharIndex = discountLabelLength - 1
+            let range = NSRange(location: lastCharIndex, length: discountLabelLength - lastCharIndex)
+            
+            let originalString = discountLabel.text
+            let attributedString = NSMutableAttributedString(string: originalString!)
+            attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: range)
+            
+            discountLabel.attributedText = attributedString
+        }
+        
+        let originalString = discountExpiryLabel.text
+        let attributedString = NSMutableAttributedString(string: originalString!)
+        attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSRange(location: 0, length: 1))
+        discountExpiryLabel.attributedText = attributedString
+        
+        let disclaimerOriginalString = disclaimer.text
+        let disclaimerAttributedString = NSMutableAttributedString(string: disclaimerOriginalString!)
+        disclaimerAttributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSRange(location: 0, length: 9))
+        disclaimer.attributedText = disclaimerAttributedString
     }
     
     // MARK: TableView Delegate Functions
@@ -74,6 +107,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.color.text = ""
         cell.gallery.setImage(UIImage(), for: .normal)
         
+        cell.productName.setTitle(" + Add a product", for: .normal)
+        cell.productName.tag = 1
         cell.productName.setTitleColor(ColorConstants.barBlue, for: .normal)
         cell.productName.layer.borderWidth = 1
         cell.productName.layer.cornerRadius = 5
@@ -81,20 +116,20 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.productName.titleLabel?.font = UIFont.boldSystemFont(ofSize: fontSize)
         cell.productName.addTarget(self, action: #selector(self.redirectToAddProduct), for: .touchUpInside)
         
+        cell.location.setTitle(" + Add more products", for: .normal)
+        cell.location.tag = 2
         cell.location.setTitleColor(ColorConstants.barBlue, for: .normal)
         cell.location.layer.borderWidth = 1
         cell.location.layer.cornerRadius = 5
         cell.location.layer.borderColor = ColorConstants.barBlue.cgColor
         cell.location.titleLabel?.font = UIFont.boldSystemFont(ofSize: fontSize)
+        cell.location.addTarget(self, action: #selector(self.redirectToAddProduct), for: .touchUpInside)
         
         cell.quantity.attributedText = NSMutableAttributedString(string: "Selected\n0")
         cell.firstYearPrice.attributedText = NSMutableAttributedString(string: "\nXXXXX")
         cell.firstYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "\nXXXXX")
         cell.secondYearPrice.attributedText = NSMutableAttributedString(string: "\nXXXXX")
         cell.secondYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "\nXXXXX")
-        
-        cell.productName.setTitle(" + Add a product", for: .normal)
-        cell.location.setTitle(" + Add more products", for: .normal)
         
         cell.backgroundColor = ColorConstants.bgGray
         return cell
@@ -149,7 +184,25 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: Internal functions
     
-    func redirectToAddProduct() {
-        self.performSegue(withIdentifier: "segueToAddProducts", sender: self)
+    func redirectToAddProduct(sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "segueToAddProducts", sender: sender)
+    }
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "segueToAddProducts" {
+            if let sender = sender as? UIButton {
+                if let destVC = segue.destination as? AddProductsViewController {
+                    if sender.tag == 1 {
+                        destVC.rowsCount = 1
+                    } else {
+                        destVC.rowsCount = 3
+                    }
+                }
+            }
+        }
     }
 }

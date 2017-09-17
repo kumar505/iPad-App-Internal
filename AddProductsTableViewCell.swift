@@ -17,12 +17,16 @@ class AddProductsTableViewCell: SwipeTableViewCell {
     @IBOutlet weak var selectColor: UITextField!
     @IBOutlet weak var firstStack: UIStackView!
     @IBOutlet weak var secondStack: UIStackView!
+    @IBOutlet weak var parentStack: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.lightGray.cgColor
+        
+        self.selectProducts.addRightView(imageName: "downarrow", widthPadding: 20)
+        self.selectColor.addRightView(imageName: "downarrow", widthPadding: 20)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
