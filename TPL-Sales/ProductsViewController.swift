@@ -29,7 +29,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: Internal variables
     
-    let fontSize: CGFloat = 17.0
+    let fontSize: CGFloat = 15.0
     let data = ["Electrical", "Outdoor", "Yellow", "5", "300", "50", "150", "100"]
     
     override func viewDidLoad() {
@@ -69,15 +69,15 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 45
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        return 55
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 60
+        return 50
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
