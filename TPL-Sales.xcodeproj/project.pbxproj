@@ -7,6 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5235D42C1F714F3D00BE4212 /* InstallOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235D42B1F714F3D00BE4212 /* InstallOptionTableViewCell.swift */; };
+		5235D45D1F71511400BE4212 /* add-product-round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D42D1F71511400BE4212 /* add-product-round.png */; };
+		5235D45E1F71511400BE4212 /* add-product-round.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5235D42E1F71511400BE4212 /* add-product-round.svg */; };
+		5235D45F1F71511400BE4212 /* add-product-round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D42F1F71511400BE4212 /* add-product-round@2x.png */; };
+		5235D4601F71511400BE4212 /* add-product-round@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4301F71511400BE4212 /* add-product-round@3x.png */; };
+		5235D4611F71511400BE4212 /* calender-time.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4311F71511400BE4212 /* calender-time.png */; };
+		5235D4621F71511400BE4212 /* calender-time.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4321F71511400BE4212 /* calender-time.svg */; };
+		5235D4631F71511400BE4212 /* calender-time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4331F71511400BE4212 /* calender-time@2x.png */; };
+		5235D4641F71511400BE4212 /* calender-time@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4341F71511400BE4212 /* calender-time@3x.png */; };
+		5235D4691F71511400BE4212 /* cash-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4391F71511400BE4212 /* cash-active.png */; };
+		5235D46A1F71511400BE4212 /* cash-active.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5235D43A1F71511400BE4212 /* cash-active.svg */; };
+		5235D46B1F71511400BE4212 /* cash-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D43B1F71511400BE4212 /* cash-active@2x.png */; };
+		5235D46C1F71511400BE4212 /* cash-active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D43C1F71511400BE4212 /* cash-active@3x.png */; };
+		5235D46D1F71511400BE4212 /* cash-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D43D1F71511400BE4212 /* cash-inactive.png */; };
+		5235D46E1F71511400BE4212 /* cash-inactive.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5235D43E1F71511400BE4212 /* cash-inactive.svg */; };
+		5235D46F1F71511400BE4212 /* cash-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D43F1F71511400BE4212 /* cash-inactive@2x.png */; };
+		5235D4701F71511400BE4212 /* cash-inactive@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4401F71511400BE4212 /* cash-inactive@3x.png */; };
+		5235D4711F71511400BE4212 /* cheque-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4411F71511400BE4212 /* cheque-active.png */; };
+		5235D4721F71511400BE4212 /* cheque-active.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4421F71511400BE4212 /* cheque-active.svg */; };
+		5235D4731F71511400BE4212 /* cheque-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4431F71511400BE4212 /* cheque-active@2x.png */; };
+		5235D4741F71511400BE4212 /* cheque-active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4441F71511400BE4212 /* cheque-active@3x.png */; };
+		5235D4751F71511400BE4212 /* cheque-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4451F71511400BE4212 /* cheque-inactive.png */; };
+		5235D4761F71511400BE4212 /* cheque-inactive.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4461F71511400BE4212 /* cheque-inactive.svg */; };
+		5235D4771F71511400BE4212 /* cheque-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4471F71511400BE4212 /* cheque-inactive@2x.png */; };
+		5235D4781F71511400BE4212 /* cheque-inactive@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4481F71511400BE4212 /* cheque-inactive@3x.png */; };
+		5235D4791F71511400BE4212 /* creditcard-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4491F71511400BE4212 /* creditcard-active.png */; };
+		5235D47A1F71511400BE4212 /* creditcard-active.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5235D44A1F71511400BE4212 /* creditcard-active.svg */; };
+		5235D47B1F71511400BE4212 /* creditcard-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D44B1F71511400BE4212 /* creditcard-active@2x.png */; };
+		5235D47C1F71511400BE4212 /* creditcard-active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D44C1F71511400BE4212 /* creditcard-active@3x.png */; };
+		5235D47D1F71511400BE4212 /* creditcard-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D44D1F71511400BE4212 /* creditcard-inactive.png */; };
+		5235D47E1F71511400BE4212 /* creditcard-inactive.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5235D44E1F71511400BE4212 /* creditcard-inactive.svg */; };
+		5235D47F1F71511400BE4212 /* creditcard-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D44F1F71511400BE4212 /* creditcard-inactive@2x.png */; };
+		5235D4801F71511400BE4212 /* creditcard-inactive@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4501F71511400BE4212 /* creditcard-inactive@3x.png */; };
+		5235D4811F71511400BE4212 /* paynow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4511F71511400BE4212 /* paynow.png */; };
+		5235D4821F71511400BE4212 /* paynow.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4521F71511400BE4212 /* paynow.svg */; };
+		5235D4831F71511400BE4212 /* paynow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4531F71511400BE4212 /* paynow@2x.png */; };
+		5235D4841F71511400BE4212 /* paynow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4541F71511400BE4212 /* paynow@3x.png */; };
+		5235D4851F71511400BE4212 /* select-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4551F71511400BE4212 /* select-active.png */; };
+		5235D4861F71511400BE4212 /* select-active.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4561F71511400BE4212 /* select-active.svg */; };
+		5235D4871F71511400BE4212 /* select-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4571F71511400BE4212 /* select-active@2x.png */; };
+		5235D4881F71511400BE4212 /* select-active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4581F71511400BE4212 /* select-active@3x.png */; };
+		5235D4891F71511400BE4212 /* select-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D4591F71511400BE4212 /* select-inactive.png */; };
+		5235D48A1F71511400BE4212 /* select-inactive.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5235D45A1F71511400BE4212 /* select-inactive.svg */; };
+		5235D48B1F71511400BE4212 /* select-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D45B1F71511400BE4212 /* select-inactive@2x.png */; };
+		5235D48C1F71511400BE4212 /* select-inactive@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D45C1F71511400BE4212 /* select-inactive@3x.png */; };
 		5647EDA1F2F947F37EB0E1F2 /* Pods_TPL_SalesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B71AA93FE7561B912D670D5 /* Pods_TPL_SalesTests.framework */; };
 		9E0013EE1F6A978A00DE537F /* CustomerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0013ED1F6A978A00DE537F /* CustomerDataModel.swift */; };
 		9E0013F01F6AA86900DE537F /* ProductsContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0013EF1F6AA86900DE537F /* ProductsContentTableViewCell.swift */; };
@@ -134,6 +179,51 @@
 
 /* Begin PBXFileReference section */
 		0D62476AF934551F8B91D0A2 /* Pods-TPL-SalesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPL-SalesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPL-SalesUITests/Pods-TPL-SalesUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5235D42B1F714F3D00BE4212 /* InstallOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallOptionTableViewCell.swift; sourceTree = "<group>"; };
+		5235D42D1F71511400BE4212 /* add-product-round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-product-round.png"; sourceTree = "<group>"; };
+		5235D42E1F71511400BE4212 /* add-product-round.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "add-product-round.svg"; sourceTree = "<group>"; };
+		5235D42F1F71511400BE4212 /* add-product-round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-product-round@2x.png"; sourceTree = "<group>"; };
+		5235D4301F71511400BE4212 /* add-product-round@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-product-round@3x.png"; sourceTree = "<group>"; };
+		5235D4311F71511400BE4212 /* calender-time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calender-time.png"; sourceTree = "<group>"; };
+		5235D4321F71511400BE4212 /* calender-time.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "calender-time.svg"; sourceTree = "<group>"; };
+		5235D4331F71511400BE4212 /* calender-time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calender-time@2x.png"; sourceTree = "<group>"; };
+		5235D4341F71511400BE4212 /* calender-time@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calender-time@3x.png"; sourceTree = "<group>"; };
+		5235D4391F71511400BE4212 /* cash-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cash-active.png"; sourceTree = "<group>"; };
+		5235D43A1F71511400BE4212 /* cash-active.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "cash-active.svg"; sourceTree = "<group>"; };
+		5235D43B1F71511400BE4212 /* cash-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cash-active@2x.png"; sourceTree = "<group>"; };
+		5235D43C1F71511400BE4212 /* cash-active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cash-active@3x.png"; sourceTree = "<group>"; };
+		5235D43D1F71511400BE4212 /* cash-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cash-inactive.png"; sourceTree = "<group>"; };
+		5235D43E1F71511400BE4212 /* cash-inactive.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "cash-inactive.svg"; sourceTree = "<group>"; };
+		5235D43F1F71511400BE4212 /* cash-inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cash-inactive@2x.png"; sourceTree = "<group>"; };
+		5235D4401F71511400BE4212 /* cash-inactive@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cash-inactive@3x.png"; sourceTree = "<group>"; };
+		5235D4411F71511400BE4212 /* cheque-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cheque-active.png"; sourceTree = "<group>"; };
+		5235D4421F71511400BE4212 /* cheque-active.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "cheque-active.svg"; sourceTree = "<group>"; };
+		5235D4431F71511400BE4212 /* cheque-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cheque-active@2x.png"; sourceTree = "<group>"; };
+		5235D4441F71511400BE4212 /* cheque-active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cheque-active@3x.png"; sourceTree = "<group>"; };
+		5235D4451F71511400BE4212 /* cheque-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cheque-inactive.png"; sourceTree = "<group>"; };
+		5235D4461F71511400BE4212 /* cheque-inactive.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "cheque-inactive.svg"; sourceTree = "<group>"; };
+		5235D4471F71511400BE4212 /* cheque-inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cheque-inactive@2x.png"; sourceTree = "<group>"; };
+		5235D4481F71511400BE4212 /* cheque-inactive@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cheque-inactive@3x.png"; sourceTree = "<group>"; };
+		5235D4491F71511400BE4212 /* creditcard-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creditcard-active.png"; sourceTree = "<group>"; };
+		5235D44A1F71511400BE4212 /* creditcard-active.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "creditcard-active.svg"; sourceTree = "<group>"; };
+		5235D44B1F71511400BE4212 /* creditcard-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creditcard-active@2x.png"; sourceTree = "<group>"; };
+		5235D44C1F71511400BE4212 /* creditcard-active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creditcard-active@3x.png"; sourceTree = "<group>"; };
+		5235D44D1F71511400BE4212 /* creditcard-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creditcard-inactive.png"; sourceTree = "<group>"; };
+		5235D44E1F71511400BE4212 /* creditcard-inactive.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "creditcard-inactive.svg"; sourceTree = "<group>"; };
+		5235D44F1F71511400BE4212 /* creditcard-inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creditcard-inactive@2x.png"; sourceTree = "<group>"; };
+		5235D4501F71511400BE4212 /* creditcard-inactive@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creditcard-inactive@3x.png"; sourceTree = "<group>"; };
+		5235D4511F71511400BE4212 /* paynow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paynow.png; sourceTree = "<group>"; };
+		5235D4521F71511400BE4212 /* paynow.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = paynow.svg; sourceTree = "<group>"; };
+		5235D4531F71511400BE4212 /* paynow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paynow@2x.png"; sourceTree = "<group>"; };
+		5235D4541F71511400BE4212 /* paynow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paynow@3x.png"; sourceTree = "<group>"; };
+		5235D4551F71511400BE4212 /* select-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-active.png"; sourceTree = "<group>"; };
+		5235D4561F71511400BE4212 /* select-active.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "select-active.svg"; sourceTree = "<group>"; };
+		5235D4571F71511400BE4212 /* select-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-active@2x.png"; sourceTree = "<group>"; };
+		5235D4581F71511400BE4212 /* select-active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-active@3x.png"; sourceTree = "<group>"; };
+		5235D4591F71511400BE4212 /* select-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-inactive.png"; sourceTree = "<group>"; };
+		5235D45A1F71511400BE4212 /* select-inactive.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "select-inactive.svg"; sourceTree = "<group>"; };
+		5235D45B1F71511400BE4212 /* select-inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-inactive@2x.png"; sourceTree = "<group>"; };
+		5235D45C1F71511400BE4212 /* select-inactive@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-inactive@3x.png"; sourceTree = "<group>"; };
 		6E80378FD66C811F60FA5212 /* Pods-TPL-Sales.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPL-Sales.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPL-Sales/Pods-TPL-Sales.release.xcconfig"; sourceTree = "<group>"; };
 		8B71AA93FE7561B912D670D5 /* Pods_TPL_SalesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TPL_SalesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9707F68A135742B265621993 /* Pods-TPL-Sales.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPL-Sales.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPL-Sales/Pods-TPL-Sales.debug.xcconfig"; sourceTree = "<group>"; };
@@ -281,6 +371,127 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5235D48D1F71520100BE4212 /* select-inactive */ = {
+			isa = PBXGroup;
+			children = (
+				5235D4591F71511400BE4212 /* select-inactive.png */,
+				5235D45A1F71511400BE4212 /* select-inactive.svg */,
+				5235D45B1F71511400BE4212 /* select-inactive@2x.png */,
+				5235D45C1F71511400BE4212 /* select-inactive@3x.png */,
+			);
+			name = "select-inactive";
+			sourceTree = "<group>";
+		};
+		5235D48E1F71542B00BE4212 /* select-active */ = {
+			isa = PBXGroup;
+			children = (
+				5235D4551F71511400BE4212 /* select-active.png */,
+				5235D4561F71511400BE4212 /* select-active.svg */,
+				5235D4571F71511400BE4212 /* select-active@2x.png */,
+				5235D4581F71511400BE4212 /* select-active@3x.png */,
+			);
+			name = "select-active";
+			sourceTree = "<group>";
+		};
+		5235D48F1F7154C000BE4212 /* add-product-round */ = {
+			isa = PBXGroup;
+			children = (
+				5235D42D1F71511400BE4212 /* add-product-round.png */,
+				5235D42E1F71511400BE4212 /* add-product-round.svg */,
+				5235D42F1F71511400BE4212 /* add-product-round@2x.png */,
+				5235D4301F71511400BE4212 /* add-product-round@3x.png */,
+			);
+			name = "add-product-round";
+			sourceTree = "<group>";
+		};
+		5235D4901F71551100BE4212 /* calender-time */ = {
+			isa = PBXGroup;
+			children = (
+				5235D4311F71511400BE4212 /* calender-time.png */,
+				5235D4321F71511400BE4212 /* calender-time.svg */,
+				5235D4331F71511400BE4212 /* calender-time@2x.png */,
+				5235D4341F71511400BE4212 /* calender-time@3x.png */,
+			);
+			name = "calender-time";
+			sourceTree = "<group>";
+		};
+		5235D4911F71559800BE4212 /* cash-active */ = {
+			isa = PBXGroup;
+			children = (
+				5235D4391F71511400BE4212 /* cash-active.png */,
+				5235D43A1F71511400BE4212 /* cash-active.svg */,
+				5235D43B1F71511400BE4212 /* cash-active@2x.png */,
+				5235D43C1F71511400BE4212 /* cash-active@3x.png */,
+			);
+			name = "cash-active";
+			sourceTree = "<group>";
+		};
+		5235D4921F7155B100BE4212 /* cash-inactive */ = {
+			isa = PBXGroup;
+			children = (
+				5235D43D1F71511400BE4212 /* cash-inactive.png */,
+				5235D43E1F71511400BE4212 /* cash-inactive.svg */,
+				5235D43F1F71511400BE4212 /* cash-inactive@2x.png */,
+				5235D4401F71511400BE4212 /* cash-inactive@3x.png */,
+			);
+			name = "cash-inactive";
+			sourceTree = "<group>";
+		};
+		5235D4931F7155D400BE4212 /* cheque-active */ = {
+			isa = PBXGroup;
+			children = (
+				5235D4411F71511400BE4212 /* cheque-active.png */,
+				5235D4421F71511400BE4212 /* cheque-active.svg */,
+				5235D4431F71511400BE4212 /* cheque-active@2x.png */,
+				5235D4441F71511400BE4212 /* cheque-active@3x.png */,
+			);
+			name = "cheque-active";
+			sourceTree = "<group>";
+		};
+		5235D4941F7155E800BE4212 /* cheque-inactive */ = {
+			isa = PBXGroup;
+			children = (
+				5235D4451F71511400BE4212 /* cheque-inactive.png */,
+				5235D4461F71511400BE4212 /* cheque-inactive.svg */,
+				5235D4471F71511400BE4212 /* cheque-inactive@2x.png */,
+				5235D4481F71511400BE4212 /* cheque-inactive@3x.png */,
+			);
+			name = "cheque-inactive";
+			sourceTree = "<group>";
+		};
+		5235D4951F7155FD00BE4212 /* creditcard-active */ = {
+			isa = PBXGroup;
+			children = (
+				5235D4491F71511400BE4212 /* creditcard-active.png */,
+				5235D44A1F71511400BE4212 /* creditcard-active.svg */,
+				5235D44B1F71511400BE4212 /* creditcard-active@2x.png */,
+				5235D44C1F71511400BE4212 /* creditcard-active@3x.png */,
+			);
+			name = "creditcard-active";
+			sourceTree = "<group>";
+		};
+		5235D4961F71561300BE4212 /* creditcard-inactive */ = {
+			isa = PBXGroup;
+			children = (
+				5235D44D1F71511400BE4212 /* creditcard-inactive.png */,
+				5235D44E1F71511400BE4212 /* creditcard-inactive.svg */,
+				5235D44F1F71511400BE4212 /* creditcard-inactive@2x.png */,
+				5235D4501F71511400BE4212 /* creditcard-inactive@3x.png */,
+			);
+			name = "creditcard-inactive";
+			sourceTree = "<group>";
+		};
+		5235D4971F71561E00BE4212 /* paynow */ = {
+			isa = PBXGroup;
+			children = (
+				5235D4511F71511400BE4212 /* paynow.png */,
+				5235D4521F71511400BE4212 /* paynow.svg */,
+				5235D4531F71511400BE4212 /* paynow@2x.png */,
+				5235D4541F71511400BE4212 /* paynow@3x.png */,
+			);
+			name = paynow;
+			sourceTree = "<group>";
+		};
 		9E4034331F63DCCD00EA6CA6 = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +553,17 @@
 		9E4034701F63DE1900EA6CA6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5235D48F1F7154C000BE4212 /* add-product-round */,
+				5235D4901F71551100BE4212 /* calender-time */,
+				5235D4911F71559800BE4212 /* cash-active */,
+				5235D4921F7155B100BE4212 /* cash-inactive */,
+				5235D4931F7155D400BE4212 /* cheque-active */,
+				5235D4941F7155E800BE4212 /* cheque-inactive */,
+				5235D4951F7155FD00BE4212 /* creditcard-active */,
+				5235D4961F71561300BE4212 /* creditcard-inactive */,
+				5235D4971F71561E00BE4212 /* paynow */,
+				5235D48E1F71542B00BE4212 /* select-active */,
+				5235D48D1F71520100BE4212 /* select-inactive */,
 				9E69C09A1F6409C4002CEE7A /* pdf */,
 				9E4035011F63DE3F00EA6CA6 /* add-product */,
 				9E4035021F63DEE200EA6CA6 /* avatar */,
@@ -606,6 +828,7 @@
 		9EF9193E1F671AA200B1EE2C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5235D42B1F714F3D00BE4212 /* InstallOptionTableViewCell.swift */,
 				9ED14FD41F6DA36600E2A1DF /* AddProductsTableViewCell.swift */,
 				9E0013EF1F6AA86900DE537F /* ProductsContentTableViewCell.swift */,
 				9E0013ED1F6A978A00DE537F /* CustomerDataModel.swift */,
@@ -758,71 +981,111 @@
 				9E4034C11F63DE2E00EA6CA6 /* avatar.png in Resources */,
 				9E4034F31F63DE2E00EA6CA6 /* menu@2x.png in Resources */,
 				9E4034E51F63DE2E00EA6CA6 /* edit-white.png in Resources */,
+				5235D45D1F71511400BE4212 /* add-product-round.png in Resources */,
+				5235D4871F71511400BE4212 /* select-active@2x.png in Resources */,
 				9E4034ED1F63DE2E00EA6CA6 /* logo.png in Resources */,
 				9E4034FA1F63DE2E00EA6CA6 /* previous.svg in Resources */,
+				5235D47B1F71511400BE4212 /* creditcard-active@2x.png in Resources */,
+				5235D4601F71511400BE4212 /* add-product-round@3x.png in Resources */,
+				5235D4841F71511400BE4212 /* paynow@3x.png in Resources */,
 				9E4034CA1F63DE2E00EA6CA6 /* camera-blue.svg in Resources */,
 				9E4034C41F63DE2E00EA6CA6 /* avatar@3x.png in Resources */,
 				9E40344D1F63DCCD00EA6CA6 /* LaunchScreen.storyboard in Resources */,
 				9E69C0861F64098B002CEE7A /* camera-blue-1.png in Resources */,
+				5235D4701F71511400BE4212 /* cash-inactive@3x.png in Resources */,
 				9E69C0971F6409BF002CEE7A /* pdf.svg in Resources */,
 				9E4034CF1F63DE2E00EA6CA6 /* camera-gray@2x.png in Resources */,
 				9E4034DC1F63DE2E00EA6CA6 /* dollar-bold@3x.png in Resources */,
 				9E4034E01F63DE2E00EA6CA6 /* dollar-normal@3x.png in Resources */,
 				9E4034CC1F63DE2E00EA6CA6 /* camera-blue@3x.png in Resources */,
+				5235D47F1F71511400BE4212 /* creditcard-inactive@2x.png in Resources */,
 				9E4034E61F63DE2E00EA6CA6 /* edit-white.svg in Resources */,
 				9E4034CE1F63DE2E00EA6CA6 /* camera-gray.svg in Resources */,
 				9E4034B91F63DE2E00EA6CA6 /* add-product.png in Resources */,
+				5235D45E1F71511400BE4212 /* add-product-round.svg in Resources */,
 				9E4034F41F63DE2E00EA6CA6 /* menu@3x.png in Resources */,
 				9E4034E81F63DE2E00EA6CA6 /* edit-white@3x.png in Resources */,
+				5235D48A1F71511400BE4212 /* select-inactive.svg in Resources */,
+				5235D46F1F71511400BE4212 /* cash-inactive@2x.png in Resources */,
 				9E4034F01F63DE2E00EA6CA6 /* logo@3x.png in Resources */,
 				9E4034D31F63DE2E00EA6CA6 /* cancel@2x.png in Resources */,
 				9E4034F81F63DE2E00EA6CA6 /* next@3x.png in Resources */,
 				9E4034D61F63DE2E00EA6CA6 /* delete.svg in Resources */,
 				9E4034FB1F63DE2E00EA6CA6 /* previous@2x.png in Resources */,
 				9E4034E71F63DE2E00EA6CA6 /* edit-white@2x.png in Resources */,
+				5235D47D1F71511400BE4212 /* creditcard-inactive.png in Resources */,
 				9E4034C81F63DE2E00EA6CA6 /* calendar@3x.png in Resources */,
+				5235D4781F71511400BE4212 /* cheque-inactive@3x.png in Resources */,
+				5235D4731F71511400BE4212 /* cheque-active@2x.png in Resources */,
 				9E4034D01F63DE2E00EA6CA6 /* camera-gray@3x.png in Resources */,
 				9E69C0901F6409B5002CEE7A /* edit-1@2x.png in Resources */,
 				9E69C0871F64098B002CEE7A /* camera-blue-1.svg in Resources */,
 				9E4034C61F63DE2E00EA6CA6 /* calendar.svg in Resources */,
+				5235D4741F71511400BE4212 /* cheque-active@3x.png in Resources */,
+				5235D4721F71511400BE4212 /* cheque-active.svg in Resources */,
 				9E4034DD1F63DE2E00EA6CA6 /* dollar-normal.png in Resources */,
 				9E40344A1F63DCCD00EA6CA6 /* Assets.xcassets in Resources */,
 				9E4034D81F63DE2E00EA6CA6 /* delete@3x.png in Resources */,
 				9E4034CD1F63DE2E00EA6CA6 /* camera-gray.png in Resources */,
+				5235D46B1F71511400BE4212 /* cash-active@2x.png in Resources */,
 				9E4034D51F63DE2E00EA6CA6 /* delete.png in Resources */,
+				5235D4851F71511400BE4212 /* select-active.png in Resources */,
 				9E4034E31F63DE2E00EA6CA6 /* downarrow@2x.png in Resources */,
+				5235D45F1F71511400BE4212 /* add-product-round@2x.png in Resources */,
+				5235D4861F71511400BE4212 /* select-active.svg in Resources */,
+				5235D4891F71511400BE4212 /* select-inactive.png in Resources */,
+				5235D47C1F71511400BE4212 /* creditcard-active@3x.png in Resources */,
 				9E4034BA1F63DE2E00EA6CA6 /* add-product.svg in Resources */,
 				9E69C0961F6409BF002CEE7A /* pdf.png in Resources */,
+				5235D46A1F71511400BE4212 /* cash-active.svg in Resources */,
 				9E4034E11F63DE2E00EA6CA6 /* downarrow.png in Resources */,
 				9E4034F21F63DE2E00EA6CA6 /* menu.svg in Resources */,
+				5235D4811F71511400BE4212 /* paynow.png in Resources */,
 				9E4034E91F63DE2E00EA6CA6 /* edit.png in Resources */,
 				9E4034EE1F63DE2E00EA6CA6 /* logo.svg in Resources */,
+				5235D4771F71511400BE4212 /* cheque-inactive@2x.png in Resources */,
 				9E69C0881F64098B002CEE7A /* camera-blue-1@2x.png in Resources */,
 				9E4034EB1F63DE2E00EA6CA6 /* edit@2x.png in Resources */,
+				5235D4611F71511400BE4212 /* calender-time.png in Resources */,
 				9E4034D71F63DE2E00EA6CA6 /* delete@2x.png in Resources */,
 				9E4034E21F63DE2E00EA6CA6 /* downarrow.svg in Resources */,
+				5235D4711F71511400BE4212 /* cheque-active.png in Resources */,
 				9E4034C51F63DE2E00EA6CA6 /* calendar.png in Resources */,
 				9E4034C91F63DE2E00EA6CA6 /* camera-blue.png in Resources */,
+				5235D4761F71511400BE4212 /* cheque-inactive.svg in Resources */,
 				9E4034F61F63DE2E00EA6CA6 /* next.svg in Resources */,
+				5235D48B1F71511400BE4212 /* select-inactive@2x.png in Resources */,
 				9E4034BC1F63DE2E00EA6CA6 /* add-product@3x.png in Resources */,
 				9E4034EF1F63DE2E00EA6CA6 /* logo@2x.png in Resources */,
 				9E4034DB1F63DE2E00EA6CA6 /* dollar-bold@2x.png in Resources */,
 				9E4034CB1F63DE2E00EA6CA6 /* camera-blue@2x.png in Resources */,
 				9E4034C21F63DE2E00EA6CA6 /* avatar.svg in Resources */,
+				5235D4881F71511400BE4212 /* select-active@3x.png in Resources */,
 				9E4034EA1F63DE2E00EA6CA6 /* edit.svg in Resources */,
+				5235D46E1F71511400BE4212 /* cash-inactive.svg in Resources */,
 				9E4034D11F63DE2E00EA6CA6 /* cancel.png in Resources */,
 				9E4034DA1F63DE2E00EA6CA6 /* dollar-bold.svg in Resources */,
 				9E4034D41F63DE2E00EA6CA6 /* cancel@3x.png in Resources */,
+				5235D47A1F71511400BE4212 /* creditcard-active.svg in Resources */,
 				9E4035001F63DE2E00EA6CA6 /* total-sum@3x.png in Resources */,
 				9E4034D91F63DE2E00EA6CA6 /* dollar-bold.png in Resources */,
 				9E4034C31F63DE2E00EA6CA6 /* avatar@2x.png in Resources */,
+				5235D4831F71511400BE4212 /* paynow@2x.png in Resources */,
 				9E69C08F1F6409B5002CEE7A /* edit-1.svg in Resources */,
+				5235D4641F71511400BE4212 /* calender-time@3x.png in Resources */,
 				9E69C0891F64098B002CEE7A /* camera-blue-1@3x.png in Resources */,
 				9E4034BB1F63DE2E00EA6CA6 /* add-product@2x.png in Resources */,
 				9E4034DF1F63DE2E00EA6CA6 /* dollar-normal@2x.png in Resources */,
+				5235D46D1F71511400BE4212 /* cash-inactive.png in Resources */,
+				5235D4791F71511400BE4212 /* creditcard-active.png in Resources */,
+				5235D47E1F71511400BE4212 /* creditcard-inactive.svg in Resources */,
 				9E4034C71F63DE2E00EA6CA6 /* calendar@2x.png in Resources */,
 				9E69C0991F6409BF002CEE7A /* pdf@3x.png in Resources */,
+				5235D4751F71511400BE4212 /* cheque-inactive.png in Resources */,
 				9E4034E41F63DE2E00EA6CA6 /* downarrow@3x.png in Resources */,
+				5235D48C1F71511400BE4212 /* select-inactive@3x.png in Resources */,
+				5235D4801F71511400BE4212 /* creditcard-inactive@3x.png in Resources */,
+				5235D4631F71511400BE4212 /* calender-time@2x.png in Resources */,
 				9E4034FC1F63DE2E00EA6CA6 /* previous@3x.png in Resources */,
 				9E4034FE1F63DE2E00EA6CA6 /* total-sum.svg in Resources */,
 				9E69C08E1F6409B5002CEE7A /* edit-1.png in Resources */,
@@ -830,13 +1093,17 @@
 				9E4034EC1F63DE2E00EA6CA6 /* edit@3x.png in Resources */,
 				9E4034F11F63DE2E00EA6CA6 /* menu.png in Resources */,
 				9E69C0911F6409B5002CEE7A /* edit-1@3x.png in Resources */,
+				5235D4621F71511400BE4212 /* calender-time.svg in Resources */,
 				9E4034DE1F63DE2E00EA6CA6 /* dollar-normal.svg in Resources */,
 				9E4034F91F63DE2E00EA6CA6 /* previous.png in Resources */,
 				9E4034FF1F63DE2E00EA6CA6 /* total-sum@2x.png in Resources */,
 				9E4034451F63DCCD00EA6CA6 /* Main.storyboard in Resources */,
 				9E4034D21F63DE2E00EA6CA6 /* cancel.svg in Resources */,
+				5235D4691F71511400BE4212 /* cash-active.png in Resources */,
 				9E4034FD1F63DE2E00EA6CA6 /* total-sum.png in Resources */,
+				5235D46C1F71511400BE4212 /* cash-active@3x.png in Resources */,
 				9E4034F71F63DE2E00EA6CA6 /* next@2x.png in Resources */,
+				5235D4821F71511400BE4212 /* paynow.svg in Resources */,
 				9E69C0981F6409BF002CEE7A /* pdf@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1016,6 +1283,7 @@
 			files = (
 				9E40351A1F63E28000EA6CA6 /* Constants.swift in Sources */,
 				9EF919371F670AF700B1EE2C /* InstallOptionViewController.swift in Sources */,
+				5235D42C1F714F3D00BE4212 /* InstallOptionTableViewCell.swift in Sources */,
 				9ED14FD31F6DA33C00E2A1DF /* AddProductsViewController.swift in Sources */,
 				9ED089751F64304A00C1EEDA /* WorkOrderTableViewController.swift in Sources */,
 				9EF919391F670B0E00B1EE2C /* AdditionalInfoViewController.swift in Sources */,

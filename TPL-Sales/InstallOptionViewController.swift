@@ -8,28 +8,92 @@
 
 import UIKit
 
-class InstallOptionViewController: UIViewController {
+class InstallOptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    // MARK: Outlets
+    
+    @IBOutlet weak var options: UITableView!
+    @IBOutlet weak var selectedOptionView: UIView!
+    @IBOutlet weak var startDate: UILabel!
+    @IBOutlet weak var startDateSelector: UITextField!
+    @IBOutlet weak var endDate: UILabel!
+    @IBOutlet weak var endDateSelector: UITextField!
+    
+    // MARK: Internal variables
+    
+    let optionList = [
+        "2 Part",
+        "Full Early",
+        "Full First Half Only",
+        "Full Specific Date With Discount",
+        "2 Part With Specific Date",
+        "Full Late",
+        "Full Second Half Only",
+        "Full Specific Date Without Discount"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.selectedOptionView.borderWidth = 0.5
+        self.selectedOptionView.borderColor = UIColor.lightGray
+        
+        self.selectedOptionView.isHidden = true
+        
+        self.startDateSelector.addRightView(imageName: "calender-time")
+        self.endDateSelector.addRightView(imageName: "calender-time")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: Tableview delegate functions
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return optionList.count
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        let view = UIView()
+        view.backgroundColor = UIColor.clear
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "installOptionCell") as! InstallOptionTableViewCell
+        cell.selectOption.setImage(UIImage(named: "select-inactive"), for: .normal)
+        cell.option.text = optionList[indexPath.section]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as! InstallOptionTableViewCell
+        cell.selectOption.setImage(UIImage(named: "select-active"), for: .normal)
+        
+        if indexPath.section == 4 {
+            self.selectedOptionView.isHidden = false
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as! InstallOptionTableViewCell
+        cell.selectOption.setImage(UIImage(named: "select-inactive"), for: .normal)
+        
+        self.selectedOptionView.isHidden = true
+    }
 }
