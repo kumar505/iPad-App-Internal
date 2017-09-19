@@ -12,7 +12,7 @@ import UIKit
 
 extension UITextField {
     
-    func formatUI(imageName: String, borderColor: UIColor? = nil) {
+    func formatUI(borderColor: UIColor? = nil) {
         self.layer.cornerRadius = 5.0
         if borderColor != nil {
             self.layer.borderWidth = 1.0

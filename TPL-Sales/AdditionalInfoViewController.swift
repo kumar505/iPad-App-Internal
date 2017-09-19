@@ -10,26 +10,17 @@ import UIKit
 
 class AdditionalInfoViewController: UIViewController {
 
+    // MARK: Outlets
+    
+    @IBOutlet weak var amps: UITextField!
+    @IBOutlet weak var breakerLocation: UITextField!
+    @IBOutlet weak var gutters: UITextField!
+    @IBOutlet weak var followUpDate: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.followUpDate.addRightView(imageName: "calender-time", widthPadding: 20)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
