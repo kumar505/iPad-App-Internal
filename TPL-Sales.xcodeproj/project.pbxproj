@@ -495,6 +495,7 @@
 		9E4034331F63DCCD00EA6CA6 = {
 			isa = PBXGroup;
 			children = (
+				9ED45D6F1F721C350027A004 /* Models */,
 				9EF9193E1F671AA200B1EE2C /* Views */,
 				9E4035181F63E23100EA6CA6 /* Supporting-Files */,
 				9E4035151F63E14B00EA6CA6 /* Extensions */,
@@ -825,13 +826,20 @@
 			name = pdf;
 			sourceTree = "<group>";
 		};
+		9ED45D6F1F721C350027A004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9E0013ED1F6A978A00DE537F /* CustomerDataModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		9EF9193E1F671AA200B1EE2C /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				5235D42B1F714F3D00BE4212 /* InstallOptionTableViewCell.swift */,
 				9ED14FD41F6DA36600E2A1DF /* AddProductsTableViewCell.swift */,
 				9E0013EF1F6AA86900DE537F /* ProductsContentTableViewCell.swift */,
-				9E0013ED1F6A978A00DE537F /* CustomerDataModel.swift */,
 				9EF9193F1F6733A700B1EE2C /* CustHeaderTableViewCell.swift */,
 				9EF9193C1F671A7000B1EE2C /* FourColumnTableViewCell.swift */,
 			);

@@ -85,7 +85,9 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "productsContentStaticCell") as! ProductsContentTableViewCell
         cell.gallery.setImage(UIImage(named: "camera-gray"), for: .normal)
         
-        cell.firstYearPrice.attributedText = NSMutableAttributedString(string: "1st Year\nPrice ($)", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
+        let firstYearString = "1st Year\nPrice ($)"
+        let firstYearMutableString = NSMutableAttributedString(string: firstYearString, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
+        cell.firstYearPrice.attributedText = firstYearMutableString
         cell.firstYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "Discounted\nPrice ($)", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
         cell.secondYearPrice.attributedText = NSMutableAttributedString(string: "2nd Year\nPrice ($)", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
         cell.secondYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "Discounted\nPrice ($)", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
@@ -94,6 +96,9 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.location.setAttributedTitle(NSMutableAttributedString(string: (cell.location.titleLabel?.text)!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)]), for: .normal)
         cell.color.attributedText = NSMutableAttributedString(string: cell.color.text!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
         cell.quantity.attributedText = NSMutableAttributedString(string: cell.quantity.text!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
+        
+        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = UIColor.lightGray.cgColor
         
         cell.backgroundColor = UIColor.white
         
@@ -144,6 +149,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.location.setTitle(data[1], for: .normal)
         cell.color.text = data[2]
         cell.quantity.text = data[3]
+//        cell.quantity.textAlignment = .center
         cell.firstYearPrice.text = data[4]
         cell.firstYearDiscountedPrice.text = data[5]
         cell.secondYearPrice.text = data[6]
