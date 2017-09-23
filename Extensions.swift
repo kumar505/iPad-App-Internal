@@ -62,8 +62,8 @@ extension UINavigationController {
         self.navigationBar.barTintColor = ColorConstants.barBlue
         self.navigationBar.tintColor = UIColor.white
         self.navigationBar.titleTextAttributes = [
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 20.0),
-            NSForegroundColorAttributeName: UIColor.white
+            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20.0),
+            NSAttributedStringKey.foregroundColor: UIColor.white
         ]
     }
 }
@@ -75,7 +75,7 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 }

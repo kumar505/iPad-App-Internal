@@ -30,8 +30,8 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
         self.navigationBar.barTintColor = ColorConstants.barBlue
         self.navigationBar.tintColor = UIColor.white
         self.navigationBar.titleTextAttributes = [
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 20.0),
-            NSForegroundColorAttributeName: UIColor.white
+            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20.0),
+            NSAttributedStringKey.foregroundColor: UIColor.white
         ]
         
         self.toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)

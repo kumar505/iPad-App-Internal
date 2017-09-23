@@ -75,14 +75,15 @@ func formBarButtonItem(title: String, imageName: String, bgColor: UIColor, seman
 func formatToolBarItems(isPrevious: Bool? = false, nextTitle: String? = "Next", width: CGFloat? = 100) -> [UIBarButtonItem] {
     
     let next = formBarButtonItem(title: nextTitle!, imageName: "next", bgColor: ColorConstants.barBlue, semantic: UISemanticContentAttribute.forceRightToLeft, width: width)
+    let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
     let previous = formBarButtonItem(title: "Previous", imageName: "previous", bgColor: ColorConstants.barBlue)
     let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     let cancel = formBarButtonItem(title: "Cancel", imageName: "cancel", bgColor: ColorConstants.buttonGray)
     
     if isPrevious! {
-        return [previous, flexibleSpace, cancel, next]
+        return [previous, flexibleSpace, cancel, fixedSpace, next]
     } else {
-        return [flexibleSpace, cancel, next]
+        return [flexibleSpace, cancel, fixedSpace, next]
     }
     
 }

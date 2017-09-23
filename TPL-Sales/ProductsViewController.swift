@@ -42,19 +42,19 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
             let originalString = discountLabel.text
             let attributedString = NSMutableAttributedString(string: originalString!)
-            attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: range)
+            attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: range)
             
             discountLabel.attributedText = attributedString
         }
         
         let originalString = discountExpiryLabel.text
         let attributedString = NSMutableAttributedString(string: originalString!)
-        attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSRange(location: 0, length: 1))
+        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: NSRange(location: 0, length: 1))
         discountExpiryLabel.attributedText = attributedString
         
         let disclaimerOriginalString = disclaimer.text
         let disclaimerAttributedString = NSMutableAttributedString(string: disclaimerOriginalString!)
-        disclaimerAttributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSRange(location: 0, length: 9))
+        disclaimerAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: NSRange(location: 0, length: 9))
         disclaimer.attributedText = disclaimerAttributedString
     }
     
@@ -86,16 +86,16 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.gallery.setImage(UIImage(named: "camera-gray"), for: .normal)
         
         let firstYearString = "1st Year\nPrice ($)"
-        let firstYearMutableString = NSMutableAttributedString(string: firstYearString, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
+        let firstYearMutableString = NSMutableAttributedString(string: firstYearString, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
         cell.firstYearPrice.attributedText = firstYearMutableString
-        cell.firstYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "Discounted\nPrice ($)", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
-        cell.secondYearPrice.attributedText = NSMutableAttributedString(string: "2nd Year\nPrice ($)", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
-        cell.secondYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "Discounted\nPrice ($)", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
+        cell.firstYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "Discounted\nPrice ($)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
+        cell.secondYearPrice.attributedText = NSMutableAttributedString(string: "2nd Year\nPrice ($)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
+        cell.secondYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "Discounted\nPrice ($)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
         
-        cell.productName.setAttributedTitle(NSMutableAttributedString(string: (cell.productName.titleLabel?.text)!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)]), for: .normal)
-        cell.location.setAttributedTitle(NSMutableAttributedString(string: (cell.location.titleLabel?.text)!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)]), for: .normal)
-        cell.color.attributedText = NSMutableAttributedString(string: cell.color.text!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
-        cell.quantity.attributedText = NSMutableAttributedString(string: cell.quantity.text!, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)])
+        cell.productName.setAttributedTitle(NSMutableAttributedString(string: (cell.productName.titleLabel?.text)!, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)]), for: .normal)
+        cell.location.setAttributedTitle(NSMutableAttributedString(string: (cell.location.titleLabel?.text)!, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)]), for: .normal)
+        cell.color.attributedText = NSMutableAttributedString(string: cell.color.text!, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
+        cell.quantity.attributedText = NSMutableAttributedString(string: cell.quantity.text!, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
         
         cell.layer.borderWidth = 0.5
         cell.layer.borderColor = UIColor.lightGray.cgColor
@@ -190,7 +190,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: Internal functions
     
-    func redirectToAddProduct(sender: UIButton) {
+    @objc func redirectToAddProduct(sender: UIButton) {
         
         self.performSegue(withIdentifier: "segueToAddProducts", sender: sender)
     }
