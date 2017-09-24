@@ -10,26 +10,94 @@ import UIKit
 
 class PaymentViewController: UIViewController {
 
+    // MARK: Outlets
+    
+    @IBOutlet weak var grandTotal: UILabel!
+    @IBOutlet weak var paymentAmount: UITextField!
+    @IBOutlet weak var balanceDue: UILabel!
+    @IBOutlet weak var payNow: UIButton!
+    @IBOutlet weak var creditCard: UIButton!
+    @IBOutlet weak var chequePayment: UIButton!
+    @IBOutlet weak var cashPayment: UIButton!
+    @IBOutlet weak var paymentField1: UITextField!
+    @IBOutlet weak var paymentField2: UITextField!
+    @IBOutlet weak var paymentField3: UITextView!
+    @IBOutlet weak var paymentStackView: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        performCreditCard(creditCard)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: Actions
+    
+    @IBAction func performPayNow(_ sender: UIButton) {
     }
-    */
+    
+    @IBAction func performCreditCard(_ sender: UIButton) {
+        
+        sender.setImage(UIImage(named: "creditcard-active"), for: .normal)
+        sender.setTitleColor(ColorConstants.barBlue, for: .normal)
+        sender.layer.borderColor = ColorConstants.barBlue.cgColor
+        
+        paymentField1.isHidden = false
+        paymentField1.placeholder = "Name on the Card"
+        paymentField2.isHidden = false
+        paymentField2.isEnabled = true
+        paymentField2.borderStyle = .roundedRect
+        paymentField2.backgroundColor = UIColor.white
+        paymentField2.placeholder = "Card Number"
+        paymentField3.isHidden = true
+        
+        chequePayment.setImage(UIImage(named: "cheque-inactive"), for: .normal)
+        chequePayment.setTitleColor(ColorConstants.textGray, for: .normal)
+        chequePayment.layer.borderColor = UIColor.lightGray.cgColor
+        cashPayment.setImage(UIImage(named: "cash-inactive"), for: .normal)
+        cashPayment.setTitleColor(ColorConstants.textGray, for: .normal)
+        cashPayment.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    @IBAction func performChequePayment(_ sender: UIButton) {
+        
+        sender.setImage(UIImage(named: "cheque-active"), for: .normal)
+        sender.setTitleColor(ColorConstants.barBlue, for: .normal)
+        sender.layer.borderColor = ColorConstants.barBlue.cgColor
+        
+        paymentField1.isHidden = false
+        paymentField1.placeholder = "Cheque Number"
+        paymentField2.isHidden = false
+        paymentField2.isEnabled = false
+        paymentField2.placeholder = ""
+        paymentField2.borderStyle = .none
+        paymentField2.backgroundColor = UIColor.clear
+        paymentField3.isHidden = true
+        
+        creditCard.setImage(UIImage(named: "creditcard-inactive"), for: .normal)
+        creditCard.setTitleColor(ColorConstants.textGray, for: .normal)
+        creditCard.layer.borderColor = UIColor.lightGray.cgColor
+        cashPayment.setImage(UIImage(named: "cash-inactive"), for: .normal)
+        cashPayment.setTitleColor(ColorConstants.textGray, for: .normal)
+        cashPayment.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    @IBAction func performCashPayment(_ sender: UIButton) {
+        
+        sender.setImage(UIImage(named: "cash-active"), for: .normal)
+        sender.setTitleColor(ColorConstants.barBlue, for: .normal)
+        sender.layer.borderColor = ColorConstants.barBlue.cgColor
+        
+        paymentField1.isHidden = true
+        paymentField2.isHidden = true
+        paymentField3.isHidden = false
+        paymentField3.text = "Reason for cash payment"
+        
+        creditCard.setImage(UIImage(named: "creditcard-inactive"), for: .normal)
+        creditCard.setTitleColor(ColorConstants.textGray, for: .normal)
+        creditCard.layer.borderColor = UIColor.lightGray.cgColor
+        chequePayment.setImage(UIImage(named: "cheque-inactive"), for: .normal)
+        chequePayment.setTitleColor(ColorConstants.textGray, for: .normal)
+        chequePayment.layer.borderColor = UIColor.lightGray.cgColor
+    }
 
 }
