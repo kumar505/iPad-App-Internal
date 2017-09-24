@@ -106,7 +106,6 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
     func persistNavigation(hidden: Bool) {
         self.notesView.isHidden = hidden
         if let parentVC = self.parent?.parent as? WorkEstimateViewController {
-//            parentVC.menuSegmentView.isHidden = hidden
             parentVC.menuSegment.isHidden = hidden
             parentVC.navigationController?.toolbar.isHidden = hidden
         }

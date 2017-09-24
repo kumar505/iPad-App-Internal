@@ -84,8 +84,14 @@ class InstallOptionViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = tableView.cellForRow(at: indexPath) as! InstallOptionTableViewCell
         cell.selectOption.setImage(UIImage(named: "select-active"), for: .normal)
         
-        if indexPath.section == 4 {
+        if (cell.option.text?.contains("Full Specific Date"))! {
             self.selectedOptionView.isHidden = false
+            self.endDate.isHidden = true
+            self.endDateSelector.isHidden = true
+        } else if (cell.option.text?.contains("2 Part With Specific Date"))! {
+            self.selectedOptionView.isHidden = false
+            self.endDate.isHidden = false
+            self.endDateSelector.isHidden = false
         }
     }
     

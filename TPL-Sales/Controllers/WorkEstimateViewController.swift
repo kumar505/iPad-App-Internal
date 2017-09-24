@@ -18,7 +18,7 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
     
     var pages = [UIViewController]()
     var pageController: UIPageViewController!
-    var currentIndex: Int?
+    private var currentIndex: Int?
     private var pendingIndex: Int?
     
     let menuSegmentItems = ["New Work Estimate", "Products", "Install Option", "Additional Information", "Payment"]
@@ -40,7 +40,7 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         self.navigationController?.toolbar.isHidden = true
         self.navigationController?.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
         self.navigationController?.toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
-        self.toolbarItems = formatToolBarItems(isPrevious: false)
+        self.toolbarItems = formatToolBarItems(isPrevious: false, target: self)
         
         menuSegmentView.backgroundColor = ColorConstants.barBlue
         
@@ -48,7 +48,7 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         menuSegment.tintColor = UIColor.white
         menuSegment.backgroundColor = ColorConstants.barBlue
         
-        //        menuSegmentView.isHidden = true
+//        menuSegmentView.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,13 +102,6 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         
         pendingIndex = pages.index(of: pendingViewControllers.first!)
-        if pendingIndex == pages.count - 1 {
-            self.toolbarItems = formatToolBarItems(isPrevious: true, nextTitle: "Save & Send", width: 150)
-        } else if pendingIndex == 0 {
-            self.toolbarItems = formatToolBarItems(isPrevious: false)
-        } else {
-            self.toolbarItems = formatToolBarItems(isPrevious: true)
-        }
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
@@ -117,13 +110,25 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
             currentIndex = pendingIndex
             if let index = currentIndex {
                 menuSegment.selectedSegmentIndex = index
+                if index == pages.count - 1 {
+                    self.toolbarItems = formatToolBarItems(isPrevious: true, nextTitle: "Save & Send", width: 150, target: self)
+                } else if index == 0 {
+                    self.toolbarItems = formatToolBarItems(isPrevious: false, target: self)
+                } else {
+                    self.toolbarItems = formatToolBarItems(isPrevious: true, target: self)
+                }
             }
         }
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return currentIndex!
     }
     
     // MARK: Actions
     
     @IBAction func performMenuNavigation(_ sender: UISegmentedControl) {
+        
         
     }
     
@@ -139,6 +144,38 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
     }
     
     // MARK: Internal functions
+    
+    @objc func performToolbar(_ sender: UIButton) {
+        
+        if sender.tag == 0 {
+            
+            // Cancel operation
+            pageController.setViewControllers([pages.first!], direction: .forward, animated: true, completion: nil)
+            currentIndex = 0
+        } else if sender.tag == 1 {
+            
+            // Previous operation
+            pageController.goToPreviousPage()
+            currentIndex! -= 1
+        } else {
+            
+            // Next operation
+            pageController.goToNextPage()
+            currentIndex! += 1
+        }
+        
+        if let index = currentIndex {
+            menuSegment.selectedSegmentIndex = index
+            if index == pages.count - 1 {
+                self.toolbarItems = formatToolBarItems(isPrevious: true, nextTitle: "Save & Send", width: 150, target: self)
+            } else if index == 0 {
+                self.toolbarItems = formatToolBarItems(isPrevious: false, target: self)
+            } else {
+                self.toolbarItems = formatToolBarItems(isPrevious: true, target: self)
+            }
+        }
+
+    }
     
     func prepareMenu() {
         
@@ -160,6 +197,7 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         }
         menuSegment.selectedSegmentIndex = 0
         
+        currentIndex = 0
         pageController.setViewControllers([pages.first!], direction: .forward, animated: true, completion: nil)
     }
     

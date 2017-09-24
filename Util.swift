@@ -48,7 +48,7 @@ func rightUserBarButtonViewItem(title: String, subTitle: String, image: UIImage?
 
 // MARK: BarButtonItem with custom button
 
-func formBarButtonItem(title: String, imageName: String, bgColor: UIColor, semantic: UISemanticContentAttribute? = .forceLeftToRight, width: CGFloat? = 100) -> UIBarButtonItem {
+func formBarButtonItem(title: String, imageName: String, bgColor: UIColor, semantic: UISemanticContentAttribute? = .forceLeftToRight, width: CGFloat? = 100, target: UIViewController?, tag: Int?) -> UIBarButtonItem {
     
     let button = UIButton(type: .custom)
     button.frame = CGRect(x: 0, y: 0, width: width!, height: 30)
@@ -66,24 +66,30 @@ func formBarButtonItem(title: String, imageName: String, bgColor: UIColor, seman
     button.backgroundColor = bgColor
     button.setImage(UIImage(named: imageName), for: .normal)
     
+    if target != nil {
+        button.addTarget(target, action: #selector(WorkEstimateViewController.performToolbar(_:)), for: .touchUpInside)
+    }
+    if tag != nil {
+        button.tag = tag!
+    }
+    
     let barButtonItem = UIBarButtonItem(customView: button)
     return barButtonItem
 }
 
 // MARK: ToolBar items
 
-func formatToolBarItems(isPrevious: Bool? = false, nextTitle: String? = "Next", width: CGFloat? = 100) -> [UIBarButtonItem] {
+func formatToolBarItems(isPrevious: Bool? = false, nextTitle: String? = "Next", width: CGFloat? = 100, target: UIViewController) -> [UIBarButtonItem] {
     
-    let next = formBarButtonItem(title: nextTitle!, imageName: "next", bgColor: ColorConstants.barBlue, semantic: UISemanticContentAttribute.forceRightToLeft, width: width)
-    let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-    let previous = formBarButtonItem(title: "Previous", imageName: "previous", bgColor: ColorConstants.barBlue)
+    let next = formBarButtonItem(title: nextTitle!, imageName: "next", bgColor: ColorConstants.barBlue, semantic: UISemanticContentAttribute.forceRightToLeft, width: width, target: target, tag: 2)
+    let previous = formBarButtonItem(title: "Previous", imageName: "previous", bgColor: ColorConstants.barBlue, target: target, tag: 1)
     let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-    let cancel = formBarButtonItem(title: "Cancel", imageName: "cancel", bgColor: ColorConstants.buttonGray)
+    let cancel = formBarButtonItem(title: "Cancel", imageName: "cancel", bgColor: ColorConstants.buttonGray, target: target, tag: 0)
     
     if isPrevious! {
-        return [previous, flexibleSpace, cancel, fixedSpace, next]
+        return [previous, flexibleSpace, cancel, next]
     } else {
-        return [flexibleSpace, cancel, fixedSpace, next]
+        return [flexibleSpace, cancel, next]
     }
     
 }

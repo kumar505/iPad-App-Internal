@@ -83,14 +83,14 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "productsContentStaticCell") as! ProductsContentTableViewCell
-        cell.gallery.setImage(UIImage(named: "camera-gray"), for: .normal)
+        cell.gallery.isHidden = true
         
-        let firstYearString = "1st Year\nPrice ($)"
+        let firstYearString = "I Year\nPrice ($)"
         let firstYearMutableString = NSMutableAttributedString(string: firstYearString, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
         cell.firstYearPrice.attributedText = firstYearMutableString
-        cell.firstYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "Discounted\nPrice ($)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
-        cell.secondYearPrice.attributedText = NSMutableAttributedString(string: "2nd Year\nPrice ($)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
-        cell.secondYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "Discounted\nPrice ($)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
+        cell.firstYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "Disc.\nPrice ($)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
+        cell.secondYearPrice.attributedText = NSMutableAttributedString(string: "II Year\nPrice ($)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
+        cell.secondYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "Disc.\nPrice ($)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)])
         
         cell.productName.setAttributedTitle(NSMutableAttributedString(string: (cell.productName.titleLabel?.text)!, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)]), for: .normal)
         cell.location.setAttributedTitle(NSMutableAttributedString(string: (cell.location.titleLabel?.text)!, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)]), for: .normal)
@@ -112,7 +112,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.color.text = ""
         cell.gallery.setImage(UIImage(), for: .normal)
         
-        cell.productName.setTitle(" + Add a product", for: .normal)
+        cell.productName.setTitle(" + Product", for: .normal)
         cell.productName.tag = 1
         cell.productName.setTitleColor(ColorConstants.barBlue, for: .normal)
         cell.productName.layer.borderWidth = 1
@@ -121,7 +121,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.productName.titleLabel?.font = UIFont.boldSystemFont(ofSize: fontSize)
         cell.productName.addTarget(self, action: #selector(self.redirectToAddProduct), for: .touchUpInside)
         
-        cell.location.setTitle(" + Add more products", for: .normal)
+        cell.location.setTitle(" + Products", for: .normal)
         cell.location.tag = 2
         cell.location.setTitleColor(ColorConstants.barBlue, for: .normal)
         cell.location.layer.borderWidth = 1

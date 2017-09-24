@@ -8,6 +8,9 @@
 
 import UIKit
 
+// App Delegate
+var appDelegate = UIApplication.shared.delegate as! AppDelegate
+
 struct ColorConstants {
     
     static var barBlue = UIColor(red: 5/255, green: 103/255, blue: 158/255, alpha: 1)
