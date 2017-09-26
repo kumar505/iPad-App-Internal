@@ -34,6 +34,32 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
         ["6301 Stonewood Dr", "Plano", "75024", " "],
         ["6301 Stonewood Dr", "Plano", "75024", ""],
     ]
+    var custDetailsJSON = [
+        [
+            "Name":"James",
+            "Email":"zipcode@gmail.com",
+            "Primary Phone":"(111) 111-111",
+            "Primary Type":"xxx"
+        ],
+        [
+            "Alternate Email":"zipcode@gmail.com",
+            "Alternate Phone":"(000) 000-000",
+            "Alternate Phone Type":"yyy",
+            "Keymap":"UPDATE"
+        ],
+        [
+            "Address":"6301 Stonewood Dr",
+            "City":"Plano",
+            "Zipcode":"75024",
+            "Gatecode": " "
+        ],
+        [
+            "Mailing Address":"6301 Stonewood Dr",
+            "City":"Plano",
+            "Zipcode":"75024",
+            "":""
+        ]
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +68,6 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
         self.notesView.isHidden = true
         
         date.setTitle(formatDate(date: Date()), for: .normal)
-        persistNavigation(hidden: true)
     }
     
     // MARK: TableView delegates functions
@@ -52,7 +77,7 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return custDetails.count
+        return custDetailsJSON.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -72,6 +97,7 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "custDetails") as! FourColumnTableViewCell
+        
         cell.column1_Item1.text = custHeaders[indexPath.row][0]
         cell.column2_Item1.text = custHeaders[indexPath.row][1]
         cell.column3_Item1.text = custHeaders[indexPath.row][2]
@@ -94,11 +120,11 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
         
         if isClicked {
             selectType.setTitle("Select Type", for: .normal)
-            persistNavigation(hidden: true)
+            persistNavigation(hidden: false)
             isClicked = false
         } else {
             selectType.setTitle("CH-New Installation", for: .normal)
-            persistNavigation(hidden: false)
+            persistNavigation(hidden: true)
             isClicked = true
         }
     }
@@ -106,8 +132,11 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
     func persistNavigation(hidden: Bool) {
         self.notesView.isHidden = hidden
         if let parentVC = self.parent?.parent as? WorkEstimateViewController {
-            parentVC.menuSegment.isHidden = hidden
-            parentVC.navigationController?.toolbar.isHidden = hidden
+            if hidden {
+                parentVC.prepareOptionsMenu()
+            } else {
+                parentVC.prepareInitialMenu()
+            }
         }
     }
 

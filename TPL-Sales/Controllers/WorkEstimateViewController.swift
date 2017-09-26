@@ -21,8 +21,6 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
     private var currentIndex: Int?
     private var pendingIndex: Int?
     
-    let menuSegmentItems = ["New Work Estimate", "Products", "Install Option", "Additional Information", "Payment"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,13 +45,11 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         menuSegment.isUserInteractionEnabled = false
         menuSegment.tintColor = UIColor.white
         menuSegment.backgroundColor = ColorConstants.barBlue
-        
-//        menuSegmentView.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-        self.prepareMenu()
+        prepareInitialMenu()
     }
 
     override func viewDidLayoutSubviews() {
@@ -150,8 +146,8 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         if sender.tag == 0 {
             
             // Cancel operation
-            pageController.setViewControllers([pages.first!], direction: .forward, animated: true, completion: nil)
-            currentIndex = 0
+            self.prepareInitialMenu()
+            
         } else if sender.tag == 1 {
             
             // Previous operation
@@ -177,28 +173,59 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
 
     }
     
-    func prepareMenu() {
+    func prepareInitialMenu() {
         
-        let newWorkEstimate: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "newWorkEstimate")
-        let products: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "products")
-        let installOption: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "installOption")
-        let additionalInfo: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "additionalInfo")
-        let payment: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "payment")
+        menuSegment.isHidden = true
+        self.navigationController?.toolbar.isHidden = true
         
-        pages.append(newWorkEstimate)
-        pages.append(products)
-        pages.append(installOption)
-        pages.append(additionalInfo)
-        pages.append(payment)
-        
+        let controllers = getControllers()
+        pages.removeAll()
         menuSegment.removeAllSegments()
-        for item in menuSegmentItems {
-            menuSegment.insertSegment(withTitle: item, at: menuSegmentItems.count, animated: true)
-        }
-        menuSegment.selectedSegmentIndex = 0
         
-        currentIndex = 0
+        pages.append(controllers[0])
+        menuSegment.insertSegment(withTitle: controllers[0].title, at: controllers.count, animated: true)
+        
         pageController.setViewControllers([pages.first!], direction: .forward, animated: true, completion: nil)
     }
     
+    func prepareOptionsMenu() {
+    
+        menuSegment.isHidden = false
+        self.navigationController?.toolbar.isHidden = false
+        
+        var controllers = getControllers()
+        controllers.removeFirst()
+        
+        for eachController in controllers {
+            pages.append(eachController)
+            menuSegment.insertSegment(withTitle: eachController.title, at: controllers.count, animated: true)
+        }
+        
+        menuSegment.selectedSegmentIndex = 0
+        currentIndex = 0
+        
+        pageController.setViewControllers([pages.first!], direction: .forward, animated: true, completion: nil)
+    }
+    
+    func getControllers() -> [UIViewController] {
+        
+        let newWorkEstimate = storyboard?.instantiateViewController(withIdentifier: "newWorkEstimate") as! NewWorkEstimateViewController
+        newWorkEstimate.title = "New Work Estimate"
+        
+        let products = storyboard?.instantiateViewController(withIdentifier: "products") as! ProductsViewController
+        products.title = "Products"
+        
+        let installOption = storyboard?.instantiateViewController(withIdentifier: "installOption") as! InstallOptionViewController
+        installOption.title = "Install Option"
+        
+        let additionalInfo = storyboard?.instantiateViewController(withIdentifier: "additionalInfo") as! AdditionalInfoViewController
+        additionalInfo.title = "Additional Information"
+        
+        let payment = storyboard?.instantiateViewController(withIdentifier: "payment") as! PaymentViewController
+        payment.title = "Payment"
+        
+        let controllers = [newWorkEstimate, products, installOption, additionalInfo, payment]
+        
+        return controllers
+    }
 }

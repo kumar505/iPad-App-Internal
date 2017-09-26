@@ -5,10 +5,10 @@ target 'TPL-Sales' do
   use_frameworks!
 
   # Pod for showing left or right swipe buttons
-  pod 'SwipeCellKit'
-
-  # Pod for showing spinners
-  pod 'MBProgressHUD', '~> 1.0.0'
+  pod 'SwipeCellKit', :git => 'https://github.com/SwipeCellKit/SwipeCellKit.git', :branch => 'swift4'
+  
+  # Pod for API networking
+  pod 'Alamofire', '~> 4.5'
 
   target 'TPL-SalesTests' do
     inherit! :search_paths

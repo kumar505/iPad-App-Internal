@@ -1230,7 +1230,7 @@
                                     <constraint firstAttribute="height" constant="30" id="44q-ln-n4c"/>
                                     <constraint firstAttribute="width" constant="50" id="reQ-H4-Amc"/>
                                 </constraints>
-                                <state key="normal" image="add-product.png"/>
+                                <state key="normal" image="add-product-round.png"/>
                                 <connections>
                                     <action selector="performAddMoreProducts:" destination="2Kt-sy-pw0" eventType="touchUpInside" id="as7-kz-F6Y"/>
                                 </connections>
@@ -2102,11 +2102,11 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8gE-Xc-D7P">
                                                 <rect key="frame" x="10" y="50" width="518.5" height="399"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <mutableString key="text">All sales are final
+                                                <string key="text">All sales are final
 
 Due to insurance purposes we cannot install materials that are not purchased from The Perfect Light
 
-Important notice: You and your contractor are responsible for meeting the terms and conditions of this contract. If you sign and fall to meet the terms and conditions of this contract, you may loose your legal rights in your home. KNOW YOUR RIGHTS UNDER THE LAW. I authorize The Perfect Light to use the credit card below for the purchase and installation of lights. After today, any remaining balance will be processed upon installation of lights.</mutableString>
+Important notice: You and your contractor are responsible for meeting the terms and conditions of this contract. If you sign and fall to meet the terms and conditions of this contract, you may loose your legal rights in your home. KNOW YOUR RIGHTS UNDER THE LAW. I authorize The Perfect Light to use the credit card below for the purchase and installation of lights. After today, any remaining balance will be processed upon installation of lights.</string>
                                                 <color key="textColor" red="0.37254901959999998" green="0.43529411759999997" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2219,6 +2219,7 @@ Important notice: You and your contractor are responsible for meeting the terms 
         </scene>
     </scenes>
     <resources>
+        <image name="add-product-round.png" width="29" height="29"/>
         <image name="add-product.png" width="7" height="8"/>
         <image name="calendar.png" width="18" height="18"/>
         <image name="camera-gray.png" width="26" height="18"/>
