@@ -104,3 +104,9 @@ func formatDate(date: Date) -> String {
     dateFormatter.dateFormat = "dd/MM/yyyy"
     return dateFormatter.string(from: date)
 }
+
+func toggleNetworkActivity(isOn: Bool) {
+    
+    UIApplication.shared.isNetworkActivityIndicatorVisible = isOn
+    appDelegate.window?.isUserInteractionEnabled = !isOn
+}

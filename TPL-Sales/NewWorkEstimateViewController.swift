@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Alamofire
 
 class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     // MARK: Outlets
     
     @IBOutlet weak var selectType: UIButton!
@@ -22,52 +23,54 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
     var isClicked = false
     
     // MARK: Internal Variables
+    var selectedWorkOrderType: WorkOrderTypeModel?
     var custHeaders = [
         ["Name", "Email", "Primary Phone", "Primary Phone Type"],
         ["Alternate Email", "Alternate Phone", "Alternate Phone Type", "Keymap"],
         ["Address", "City", "Zipcode", "Gatecode"],
         ["Mailing Address", "City", "Zipcode", ""]
     ]
-    var custDetails = [
-        ["James", "zipcode@gmail.com", "(111) 111-111", "xxx"],
-        ["zipcode@gmail.com", "(000) 000-000", "yyy", "UPDATE"],
-        ["6301 Stonewood Dr", "Plano", "75024", " "],
-        ["6301 Stonewood Dr", "Plano", "75024", ""],
-    ]
-    var custDetailsJSON = [
-        [
-            "Name":"James",
-            "Email":"zipcode@gmail.com",
-            "Primary Phone":"(111) 111-111",
-            "Primary Type":"xxx"
-        ],
-        [
-            "Alternate Email":"zipcode@gmail.com",
-            "Alternate Phone":"(000) 000-000",
-            "Alternate Phone Type":"yyy",
-            "Keymap":"UPDATE"
-        ],
-        [
-            "Address":"6301 Stonewood Dr",
-            "City":"Plano",
-            "Zipcode":"75024",
-            "Gatecode": " "
-        ],
-        [
-            "Mailing Address":"6301 Stonewood Dr",
-            "City":"Plano",
-            "Zipcode":"75024",
-            "":""
-        ]
-    ]
+    var custDetailsJSON:[AnyHashable: Any] = [:]
+    var custDetails: [[String]] = []
+    
+    var customerData = CustomerDataModel() {
+        didSet {
+//            custDetailsJSON = [
+//                "Name":customerData.PrimaryName,
+//                "Email":customerData.PrimaryEmail,
+//                "Primary Phone":customerData.PrimaryPhone,
+//                "Primary Type":customerData.PrimaryPhoneType,
+//                "Alternate Email":customerData.Email,
+//                "Alternate Phone":customerData.AltPhone,
+//                "Alternate Phone Type":customerData.AltPhoneType,
+//                "Keymap":customerData.KeyMap,
+//                "Address":customerData.Address1,
+//                "City":customerData.City,
+//                "Zipcode":customerData.ZipCode,
+//                "Gatecode": customerData.GateCode,
+//                "Mailing Address":customerData.BillingAddress1,
+//                "Mailing City":customerData.BillingCity,
+//                "Mailing Zipcode":customerData.BillingZip
+//            ]
+            
+            custDetails = [
+                [customerData.PrimaryName, customerData.PrimaryEmail, customerData.PrimaryPhone, customerData.PrimaryPhoneType],
+                [customerData.Email, customerData.AltPhone, customerData.AltPhoneType, customerData.KeyMap],
+                [customerData.Address1, customerData.City, customerData.ZipCode, customerData.GateCode],
+                [customerData.BillingAddress1, customerData.BillingCity, customerData.BillingZip, ""]
+            ]
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.customerDetails.tableFooterView = UIView()
         self.notesView.isHidden = true
+        self.customerDetails.tableFooterView = UIView()
         
         date.setTitle(formatDate(date: Date()), for: .normal)
+        
+        getCustomerDetails(Id: "8488")
     }
     
     // MARK: TableView delegates functions
@@ -77,7 +80,8 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return custDetailsJSON.count
+        
+        return custDetails.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -117,37 +121,70 @@ class NewWorkEstimateViewController: UIViewController, UITableViewDelegate, UITa
     // MARK: Actions
     
     @IBAction func performSelectedType(_ sender: UIButton) {
+
+        self.performSegue(withIdentifier: "segueToWorkOrderDropDown", sender: sender)
+    }
+    
+    @IBAction func unwindSegueFromSelectedType(_ segue: UIStoryboardSegue) {
         
-        if isClicked {
-            selectType.setTitle("Select Type", for: .normal)
+        if selectedWorkOrderType?.id == 1 {
+            self.selectType.setTitle(selectedWorkOrderType?.name, for: .normal)
             persistNavigation(hidden: false)
-            isClicked = false
         } else {
-            selectType.setTitle("CH-New Installation", for: .normal)
+            self.selectType.setTitle(selectedWorkOrderType?.name, for: .normal)
             persistNavigation(hidden: true)
-            isClicked = true
         }
+        
+        getProducts(id: "1")
     }
     
     func persistNavigation(hidden: Bool) {
+        
         self.notesView.isHidden = hidden
         if let parentVC = self.parent?.parent as? WorkEstimateViewController {
             if hidden {
-                parentVC.prepareOptionsMenu()
-            } else {
                 parentVC.prepareInitialMenu()
+            } else {
+                parentVC.prepareNewWorkEstimateMenu()
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    // MARK: Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "segueToWorkOrderDropDown" {
+            if let destPC = segue.destination.popoverPresentationController, let sourceView = sender as? UIButton, let destVC = segue.destination as? WorkOrderTypeDropDownTableViewController {
+                destVC.selectedOption = self.selectedWorkOrderType
+                destPC.sourceRect = sourceView.bounds
+            }
+        }
     }
-    */
-
+    
+    // MARK: Internal functions
+    
+    func getCustomerDetails(Id: String) {
+        
+        let params = [
+            "id" : Id
+        ]
+        
+        toggleNetworkActivity(isOn: true)
+        Alamofire.request(ServerAPI.getCustomerDetails, method: .get, parameters: params, encoding: URLEncoding.queryString).responseJSON { (response) in
+            
+            toggleNetworkActivity(isOn: false)
+            switch response.result {
+            case .success:
+                if let responseData = response.result.value as? NSDictionary {
+                    
+                    self.customerData = customer.parseServerData(response: responseData)
+                    self.customerDetails.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
 }

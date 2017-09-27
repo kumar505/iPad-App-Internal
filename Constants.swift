@@ -21,9 +21,39 @@ struct ColorConstants {
     static var buttonYellow = UIColor(red: 246/255, green: 203/255, blue: 83/255, alpha: 1)
 }
 
-let products = "Products"
-let installOption = "Install Option"
-let additionalInfo = "Additional Information"
-let payment = "Payment"
+struct ServerAPI {
+    
+    static var getCustomerDetails = "http://tpl.demo.aezion.com/mobile/getcustomerbyid"
+    static var getWorkOrderTypes = "http://tpl.demo.aezion.com/mobile/GetWorkOrderTypes"
+    static var getProductsListById = "http://tpl.demo.aezion.com//mobile/GetProductsList/?id=1"
+    static var getProductColors = "http://tpl.demo.aezion.com/mobile/getproductcolors"
+}
 
-let workOrderTypes = [[products, installOption, additionalInfo, payment]]
+struct ProductCatType {
+    
+    static var CH = "CH"
+    static var LL = "LL"
+    static var LLService = "LL- Service"
+    static var Event = "Event"
+}
+
+enum ProductCatTypeRaw: Int {
+    
+    case CH = 1
+    case LL = 2
+    case LLService = 3
+    case Event = 4
+}
+
+
+// Work order types
+var workOrderTypes: [WorkOrderTypeModel] = []
+
+// Product Colors
+var productColors: [ProductColorModel] = []
+
+// Products
+var products: [ProductModel] = []
+
+// Customer Details
+var customer = CustomerDataModel()

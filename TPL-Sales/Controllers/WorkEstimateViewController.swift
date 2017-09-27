@@ -26,6 +26,9 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         
         pageController.delegate = self
         pageController.dataSource = self
+        
+        getWorkOrderTypes()
+        getProductColors()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -179,21 +182,25 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         self.navigationController?.toolbar.isHidden = true
         
         let controllers = getControllers()
-        pages.removeAll()
         menuSegment.removeAllSegments()
-        
-        pages.append(controllers[0])
-        menuSegment.insertSegment(withTitle: controllers[0].title, at: controllers.count, animated: true)
-        
-        pageController.setViewControllers([pages.first!], direction: .forward, animated: true, completion: nil)
+        if pages.count > 0 {
+            if let range = Range.init(NSRange(location: 1, length: pages.count - 1)) {
+                pages.removeSubrange(range)
+            }
+        } else {
+            pages.append(controllers[0])
+            menuSegment.insertSegment(withTitle: controllers[0].title, at: controllers.count, animated: true)
+            pageController.setViewControllers([pages.first!], direction: .forward, animated: true, completion: nil)
+        }
     }
     
-    func prepareOptionsMenu() {
+    func prepareNewWorkEstimateMenu() {
     
         menuSegment.isHidden = false
         self.navigationController?.toolbar.isHidden = false
         
         var controllers = getControllers()
+        menuSegment.insertSegment(withTitle: controllers[0].title, at: controllers.count, animated: true)
         controllers.removeFirst()
         
         for eachController in controllers {
