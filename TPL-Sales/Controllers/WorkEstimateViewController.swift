@@ -149,7 +149,9 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         if sender.tag == 0 {
             
             // Cancel operation
+            pages.removeAll()
             self.prepareInitialMenu()
+            currentIndex = 0
             
         } else if sender.tag == 1 {
             

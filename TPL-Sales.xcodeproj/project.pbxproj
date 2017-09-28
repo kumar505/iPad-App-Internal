@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		522DB0731F7CC5FA00D9E4CE /* ProductsDropDownTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DB0721F7CC5FA00D9E4CE /* ProductsDropDownTableViewController.swift */; };
+		522DB0751F7CC61200D9E4CE /* ColorsDropDownTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DB0741F7CC61200D9E4CE /* ColorsDropDownTableViewController.swift */; };
 		5235D42C1F714F3D00BE4212 /* InstallOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235D42B1F714F3D00BE4212 /* InstallOptionTableViewCell.swift */; };
 		5235D45D1F71511400BE4212 /* add-product-round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5235D42D1F71511400BE4212 /* add-product-round.png */; };
 		5235D45E1F71511400BE4212 /* add-product-round.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5235D42E1F71511400BE4212 /* add-product-round.svg */; };
@@ -184,6 +186,8 @@
 
 /* Begin PBXFileReference section */
 		0D62476AF934551F8B91D0A2 /* Pods-TPL-SalesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPL-SalesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPL-SalesUITests/Pods-TPL-SalesUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		522DB0721F7CC5FA00D9E4CE /* ProductsDropDownTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDropDownTableViewController.swift; sourceTree = "<group>"; };
+		522DB0741F7CC61200D9E4CE /* ColorsDropDownTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsDropDownTableViewController.swift; sourceTree = "<group>"; };
 		5235D42B1F714F3D00BE4212 /* InstallOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallOptionTableViewCell.swift; sourceTree = "<group>"; };
 		5235D42D1F71511400BE4212 /* add-product-round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-product-round.png"; sourceTree = "<group>"; };
 		5235D42E1F71511400BE4212 /* add-product-round.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "add-product-round.svg"; sourceTree = "<group>"; };
@@ -795,6 +799,8 @@
 		9E4035141F63E08B00EA6CA6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				522DB0721F7CC5FA00D9E4CE /* ProductsDropDownTableViewController.swift */,
+				522DB0741F7CC61200D9E4CE /* ColorsDropDownTableViewController.swift */,
 				52DD7EB01F7BCD2700E2C265 /* WorkOrderTypeDropDownTableViewController.swift */,
 				9ED14FD21F6DA33C00E2A1DF /* AddProductsViewController.swift */,
 				9EF919361F670AF700B1EE2C /* InstallOptionViewController.swift */,
@@ -1319,10 +1325,12 @@
 				9E40351C1F63EBCE00EA6CA6 /* Util.swift in Sources */,
 				9E4034481F63DCCD00EA6CA6 /* TPL_Sales.xcdatamodeld in Sources */,
 				9E4035131F63E07E00EA6CA6 /* WorkEstimateViewController.swift in Sources */,
+				522DB0751F7CC61200D9E4CE /* ColorsDropDownTableViewController.swift in Sources */,
 				9EF9193B1F670B1A00B1EE2C /* PaymentViewController.swift in Sources */,
 				9E4034401F63DCCD00EA6CA6 /* AppDelegate.swift in Sources */,
 				9EF919351F6708B900B1EE2C /* ProductsViewController.swift in Sources */,
 				9EF9193D1F671A7000B1EE2C /* FourColumnTableViewCell.swift in Sources */,
+				522DB0731F7CC5FA00D9E4CE /* ProductsDropDownTableViewController.swift in Sources */,
 				9E0013F01F6AA86900DE537F /* ProductsContentTableViewCell.swift in Sources */,
 				9ED14FD51F6DA36600E2A1DF /* AddProductsTableViewCell.swift in Sources */,
 				9EF919401F6733A700B1EE2C /* CustHeaderTableViewCell.swift in Sources */,

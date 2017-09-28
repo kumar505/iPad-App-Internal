@@ -9,7 +9,7 @@
 import UIKit
 import SwipeCellKit
 
-class AddProductsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
+class AddProductsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SwipeTableViewCellDelegate {
 
     // MARK: Outlets
     
@@ -22,6 +22,8 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
     
     // MARK: Internal variables
     var rowsCount = 3
+    var selectedProduct: ProductModel?
+    var selectedColor: ProductColorModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +85,8 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "addProductsCell") as! AddProductsTableViewCell
         cell.delegate = self
+        cell.selectProducts.delegate = self
+        cell.selectColor.delegate = self
         if rowsCount > 1 {
             cell.parentStack.axis = .horizontal
         }
@@ -126,6 +130,35 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
         return options
     }
     
+    // MARK: TextField delegate methods
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        // UIStackView -> UIStackView -> UITableViewCellContentView -> AddProductsTableViewCell
+        if let cell = textField.superview?.superview?.superview?.superview as? AddProductsTableViewCell {
+            
+            if cell.selectProducts == textField {
+                performSegue(withIdentifier: "segueToPoductsDropDown", sender: cell)
+                return false
+            }
+            if cell.selectColor == textField {
+                performSegue(withIdentifier: "segueToColorDropDown", sender: cell)
+                return false
+            }
+        }
+        return true
+    }
+    
+    // MARK: UnWind Segues
+    
+    @IBAction func unwindSegueFromSelectedProduct(_ segue: UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction func unwindSegueFromSelectedColor(_ segue: UIStoryboardSegue) {
+        
+    }
+    
     // MARK: Actions
     
     @IBAction func performCancel(_ sender: UIBarButtonItem) {
@@ -139,5 +172,24 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func performAddMoreProducts(_ sender: UIButton) {
         rowsCount += 1
         productLabels.reloadData()
+    }
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "segueToPoductsDropDown" {
+            if let destPC = segue.destination.popoverPresentationController, let sourceView = sender as? UITableViewCell, let destVC = segue.destination as? ProductsDropDownTableViewController {
+                destVC.selectedProduct = self.selectedProduct
+                destPC.sourceRect = sourceView.bounds
+            }
+        }
+        
+        if segue.identifier == "segueToColorDropDown" {
+            if let destPC = segue.destination.popoverPresentationController, let sourceView = sender as? UITableViewCell, let destVC = segue.destination as? ColorsDropDownTableViewController {
+                destVC.selectedColor = self.selectedColor
+                destPC.sourceRect = sourceView.bounds
+            }
+        }
     }
 }
