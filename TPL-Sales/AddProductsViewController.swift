@@ -191,10 +191,12 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
             } else {
                 estimate.quantity = 0
             }
-            estimate.firstYearPrice = estimate.calculateFirstYearPrice()
-            estimate.firstYearDiscPrice = estimate.calculateFirstYearDiscPrice()
-            estimate.secondYearPrice = estimate.calculateSecondYearPrice()
-            estimate.secondYearDiscPrice = estimate.calculateSecondYearDiscPrice()
+            if estimate.product?.price != nil {
+                estimate.firstYearPrice = estimate.calculateFirstYearPrice()
+                estimate.firstYearDiscPrice = estimate.calculateFirstYearDiscPrice()
+                estimate.secondYearPrice = estimate.calculateSecondYearPrice()
+                estimate.secondYearDiscPrice = estimate.calculateSecondYearDiscPrice()
+            }
         }
         if textField.tag == 3 {
             if let inputValue = textField.text {
@@ -210,7 +212,15 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
         if selectedProduct != nil {
             let cell = productLabels.cellForRow(at: currentIndexPath!) as? AddProductsTableViewCell
             cell?.selectProducts.text = selectedProduct?.name
-            internalProductEstimates[(currentIndexPath?.section)!].product = selectedProduct
+            let estimate = internalProductEstimates[(currentIndexPath?.section)!]
+            estimate.product = selectedProduct
+            if estimate.quantity != nil {
+                estimate.firstYearPrice = estimate.calculateFirstYearPrice()
+                estimate.firstYearDiscPrice = estimate.calculateFirstYearDiscPrice()
+                estimate.secondYearPrice = estimate.calculateSecondYearPrice()
+                estimate.secondYearDiscPrice = estimate.calculateSecondYearDiscPrice()
+            }
+            
         }
     }
     
