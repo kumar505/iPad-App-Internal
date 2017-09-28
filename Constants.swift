@@ -45,6 +45,9 @@ enum ProductCatTypeRaw: Int {
     case Event = 4
 }
 
+// Tax
+var tax = 8.25
+var storageFee = 75
 
 // Work order types
 var workOrderTypes: [WorkOrderTypeModel] = []
@@ -54,6 +57,9 @@ var productColors: [ProductColorModel] = []
 
 // Products
 var products: [ProductModel] = []
+
+// Products Estimate
+var productsEstimate: [ProductEstimateModel] = []
 
 // Customer Details
 var customer = CustomerDataModel()

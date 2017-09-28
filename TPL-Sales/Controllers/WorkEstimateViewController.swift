@@ -202,6 +202,7 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         self.navigationController?.toolbar.isHidden = false
         
         var controllers = getControllers()
+        menuSegment.removeAllSegments()
         menuSegment.insertSegment(withTitle: controllers[0].title, at: controllers.count, animated: true)
         controllers.removeFirst()
         

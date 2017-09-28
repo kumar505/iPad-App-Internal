@@ -17,13 +17,15 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var productLabels: UITableView!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var cancel: UIBarButtonItem!
-    @IBOutlet weak var add: UIBarButtonItem!
     @IBOutlet weak var addMoreProducts: UIButton!
     
     // MARK: Internal variables
-    var rowsCount = 3
+    var rowsCount = 0
+    var currentIndexPath: IndexPath?
     var selectedProduct: ProductModel?
     var selectedColor: ProductColorModel?
+    var selectedProductEstimate: ProductEstimateModel?
+    var internalProductEstimates: [ProductEstimateModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +58,13 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
         button.layer.borderColor = ColorConstants.barBlue.cgColor
         button.layer.cornerRadius = 5
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
+        button.addTarget(self, action: #selector(performAdd(_:)), for: .touchUpInside)
         let barButtonItem = UIBarButtonItem(customView: button)
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         self.toolBar.items = [barButtonItem, flexibleSpace]
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     // MARK: Tableview delegate functions
@@ -87,8 +92,23 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
         cell.delegate = self
         cell.selectProducts.delegate = self
         cell.selectColor.delegate = self
+        cell.quantity.delegate = self
+        cell.location.delegate = self
+        
+        cell.selectProducts.tag = 0
+        cell.selectColor.tag = 1
+        cell.quantity.tag = 2
+        cell.location.tag = 3
+        
         if rowsCount > 1 {
             cell.parentStack.axis = .horizontal
+        } else {
+            if self.selectedProductEstimate != nil {
+                cell.selectProducts.text = selectedProductEstimate?.product?.name
+                cell.selectColor.text = selectedProductEstimate?.color?.name
+                cell.quantity.text = selectedProductEstimate?.quantity?.stringValue
+                cell.location.text = selectedProductEstimate?.location
+            }
         }
         return cell
     }
@@ -132,11 +152,22 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
     
     // MARK: TextField delegate methods
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         // UIStackView -> UIStackView -> UITableViewCellContentView -> AddProductsTableViewCell
         if let cell = textField.superview?.superview?.superview?.superview as? AddProductsTableViewCell {
             
+            currentIndexPath = productLabels.indexPath(for: cell)
+            let estimate = ProductEstimateModel()
+            if internalProductEstimates.count <= (currentIndexPath?.section)! {
+                internalProductEstimates.insert(estimate, at: (currentIndexPath?.section)!)
+            }
             if cell.selectProducts == textField {
                 performSegue(withIdentifier: "segueToPoductsDropDown", sender: cell)
                 return false
@@ -149,14 +180,47 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
         return true
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        let estimate = internalProductEstimates[(currentIndexPath?.section)!] as ProductEstimateModel
+        let formatter = NumberFormatter()
+        
+        if textField.tag == 2 {
+            if let inputValue = textField.text, inputValue != "" {
+                estimate.quantity = formatter.number(from: textField.text!)
+            } else {
+                estimate.quantity = 0
+            }
+            estimate.firstYearPrice = estimate.calculateFirstYearPrice()
+            estimate.firstYearDiscPrice = estimate.calculateFirstYearDiscPrice()
+            estimate.secondYearPrice = estimate.calculateSecondYearPrice()
+            estimate.secondYearDiscPrice = estimate.calculateSecondYearDiscPrice()
+        }
+        if textField.tag == 3 {
+            if let inputValue = textField.text {
+                estimate.location = inputValue
+            }
+        }
+    }
+    
     // MARK: UnWind Segues
     
     @IBAction func unwindSegueFromSelectedProduct(_ segue: UIStoryboardSegue) {
         
+        if selectedProduct != nil {
+            let cell = productLabels.cellForRow(at: currentIndexPath!) as? AddProductsTableViewCell
+            cell?.selectProducts.text = selectedProduct?.name
+            internalProductEstimates[(currentIndexPath?.section)!].product = selectedProduct
+        }
     }
     
     @IBAction func unwindSegueFromSelectedColor(_ segue: UIStoryboardSegue) {
         
+        if selectedColor != nil {
+            let cell = productLabels.cellForRow(at: currentIndexPath!) as? AddProductsTableViewCell
+            cell?.selectColor.text = selectedColor?.name
+            internalProductEstimates[(currentIndexPath?.section)!].color = selectedColor
+        }
     }
     
     // MARK: Actions
@@ -165,8 +229,12 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func performAdd(_ sender: UIBarButtonItem) {
-        
+    @objc func performAdd(_ sender: UIButton) {
+        internalProductEstimates = internalProductEstimates.filter {
+            $0.product != nil && $0.color != nil && $0.quantity != nil && $0.location != nil
+        }
+        productsEstimate.append(contentsOf: internalProductEstimates)
+        performSegue(withIdentifier: "unwindWithAddProducts", sender: self)
     }
     
     @IBAction func performAddMoreProducts(_ sender: UIButton) {
@@ -179,16 +247,20 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "segueToPoductsDropDown" {
-            if let destPC = segue.destination.popoverPresentationController, let sourceView = sender as? UITableViewCell, let destVC = segue.destination as? ProductsDropDownTableViewController {
+            if let destPC = segue.destination.popoverPresentationController, let sourceCell = sender as? AddProductsTableViewCell, let destVC = segue.destination as? ProductsDropDownTableViewController {
                 destVC.selectedProduct = self.selectedProduct
-                destPC.sourceRect = sourceView.bounds
+                destPC.sourceView = sourceCell
+                destPC.sourceRect = sourceCell.selectProducts.bounds
             }
         }
         
         if segue.identifier == "segueToColorDropDown" {
-            if let destPC = segue.destination.popoverPresentationController, let sourceView = sender as? UITableViewCell, let destVC = segue.destination as? ColorsDropDownTableViewController {
+            if let destPC = segue.destination.popoverPresentationController, let sourceCell = sender as? AddProductsTableViewCell, let destVC = segue.destination as? ColorsDropDownTableViewController {
                 destVC.selectedColor = self.selectedColor
-                destPC.sourceRect = sourceView.bounds
+                destPC.sourceView = sourceCell
+                destPC.sourceRect = sourceCell.selectColor.bounds
+                
+//                productLabels.rectForRow(at: productLabels.indexPath(for: sourceCell)!)
             }
         }
     }

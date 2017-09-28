@@ -54,7 +54,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         let disclaimerOriginalString = disclaimer.text
         let disclaimerAttributedString = NSMutableAttributedString(string: disclaimerOriginalString!)
-        disclaimerAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: NSRange(location: 0, length: 9))
+        disclaimerAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: NSRange(location: 0, length: 10))
         disclaimer.attributedText = disclaimerAttributedString
     }
     
@@ -65,10 +65,20 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        
+        if productsEstimate.count == 0 {
+            return 1
+        }
+        
+        return productsEstimate.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if productsEstimate.count == 0 {
+            return 90
+        }
+        
         return 45
     }
     
@@ -142,20 +152,31 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "productsContentStaticCell") as! ProductsContentTableViewCell
-        cell.delegate = self
-        cell.gallery.setImage(UIImage(named: "camera-blue-1"), for: .normal)
-        cell.productName.setTitle(data[0], for: .normal)
-        cell.location.setTitle(data[1], for: .normal)
-        cell.color.text = data[2]
-        cell.quantity.text = data[3]
-//        cell.quantity.textAlignment = .center
-        cell.firstYearPrice.text = data[4]
-        cell.firstYearDiscountedPrice.text = data[5]
-        cell.secondYearPrice.text = data[6]
-        cell.secondYearDiscountedPrice.text = data[7]
-        
-        return cell
+        if productsEstimate.count > 0 {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "productsContentStaticCell") as! ProductsContentTableViewCell
+            let estimate = productsEstimate[indexPath.row]
+            cell.delegate = self
+            cell.gallery.setImage(UIImage(named: "camera-blue-1"), for: .normal)
+            cell.productName.setTitle(estimate.product?.name, for: .normal)
+            cell.location.setTitle(estimate.location, for: .normal)
+            cell.color.text = estimate.color?.name
+            cell.quantity.text = "\(String(describing: estimate.quantity!))"
+            cell.firstYearPrice.text = "\(String(describing: estimate.firstYearPrice!))"
+            cell.firstYearDiscountedPrice.text = "\(String(describing: estimate.firstYearDiscPrice!))"
+            cell.secondYearPrice.text = "\(String(describing: estimate.secondYearPrice!))"
+            cell.secondYearDiscountedPrice.text = "\(String(describing: estimate.secondYearDiscPrice!))"
+            
+            return cell
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "productsEmptyCell")
+            cell?.textLabel?.text = "No Products Available"
+            cell?.textLabel?.textAlignment = .center
+            cell?.textLabel?.textColor = ColorConstants.textGray
+            cell?.selectionStyle = .none
+            return cell!
+        }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
@@ -188,11 +209,28 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         return options
     }
     
-    // MARK: Internal functions
+/*
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateFooterView()
+    }
     
-    @objc func redirectToAddProduct(sender: UIButton) {
+    func updateFooterView() {
         
-        self.performSegue(withIdentifier: "segueToAddProducts", sender: sender)
+        let sectionFrame = products.rect(forSection: 0)
+        let bottomSpace = products.contentOffset.y + products.frame.height - sectionFrame.maxY
+        let footerRect = products.rectForFooter(inSection: 0)
+        let footerHeight = footerRect.height
+        let transformY = products.contentOffset.y + footerHeight - min(bottomSpace, footerHeight)
+        var local = footerRect
+        local.origin.y = products.bounds.size.height - footerRect.height + transformY
+        products.tableFooterView?.frame = footerRect
+    }
+*/
+    
+    // MARK: Unwind segues
+    
+    @IBAction func unwindSegueFromAddProducts(_ segue: UIStoryboardSegue) {
+        products.reloadData()
     }
     
     // MARK: Navigation
@@ -210,5 +248,12 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
         }
+    }
+    
+    // MARK: Internal functions
+    
+    @objc func redirectToAddProduct(sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "segueToAddProducts", sender: sender)
     }
 }

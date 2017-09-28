@@ -37,6 +37,8 @@ class ProductModel {
             
             if let price = eachResponse.object(forKey: "Price") as? Double {
                 product.price = price
+            } else {
+                product.price = 0
             }
             
             if let color = eachResponse.object(forKey: "Color") as? String {
