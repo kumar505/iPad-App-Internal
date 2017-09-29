@@ -21,10 +21,12 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
     
     // MARK: Internal variables
     var rowsCount = 0
+    var isMultipleAdd: Bool?
     var currentIndexPath: IndexPath?
     var selectedProduct: ProductModel?
     var selectedColor: ProductColorModel?
     var selectedProductEstimate: ProductEstimateModel?
+    var selectedProductEstimateIndex: Int?
     var internalProductEstimates: [ProductEstimateModel] = []
     
     override func viewDidLoad() {
@@ -75,7 +77,7 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if rowsCount > 1 {
+        if rowsCount > 1 && isMultipleAdd! {
             return 120
         }
         
@@ -89,7 +91,7 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "addProductsCell") as! AddProductsTableViewCell
-        cell.delegate = self
+        
         cell.selectProducts.delegate = self
         cell.selectColor.delegate = self
         cell.quantity.delegate = self
@@ -101,6 +103,7 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
         cell.location.tag = 3
         
         if rowsCount > 1 {
+            cell.delegate = self
             cell.parentStack.axis = .horizontal
         } else {
             if self.selectedProductEstimate != nil {
@@ -126,27 +129,25 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
-        if rowsCount > 1 {
-            guard orientation == .right else {
-                return nil
-            }
-            
-            let deleteAction = SwipeAction(style: .destructive, title: "Delete") {
-                action, indexPath in
-                self.rowsCount -= 1
-                if indexPath.section <= self.internalProductEstimates.count && self.internalProductEstimates.count != 0 {
-                    self.internalProductEstimates.remove(at: indexPath.section)
-                }
-                let indexSet = IndexSet(integer: indexPath.section)
-                self.productLabels.deleteSections(indexSet, with: .automatic)
-                action.fulfill(with: .delete)
-            }
-            deleteAction.image = UIImage(named: "delete")
-            
-            return [deleteAction]
+        guard orientation == .right else {
+            return nil
         }
         
-        return nil
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") {
+            action, indexPath in
+            print("Before: \(self.rowsCount)")
+            self.rowsCount -= 1
+            print("After: \(self.rowsCount)")
+            if indexPath.section <= self.internalProductEstimates.count && self.internalProductEstimates.count != 0 {
+                self.internalProductEstimates.remove(at: indexPath.section)
+            }
+            let indexSet = IndexSet(integer: indexPath.section)
+            self.productLabels.deleteSections(indexSet, with: .automatic)
+            action.fulfill(with: .reset)
+        }
+        deleteAction.image = UIImage(named: "delete")
+        
+        return [deleteAction]
     }
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
@@ -254,7 +255,11 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
         internalProductEstimates = internalProductEstimates.filter {
             $0.product != nil && $0.color != nil && $0.quantity != nil && $0.location != nil
         }
-        productsEstimate.append(contentsOf: internalProductEstimates)
+        if selectedProductEstimateIndex != nil && internalProductEstimates.count > 0 {
+            productsEstimate[selectedProductEstimateIndex!] = internalProductEstimates[0]
+        } else {
+            productsEstimate.append(contentsOf: internalProductEstimates)
+        }
         performSegue(withIdentifier: "unwindWithAddProducts", sender: self)
     }
     

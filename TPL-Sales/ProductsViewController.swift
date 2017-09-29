@@ -10,7 +10,7 @@ import UIKit
 import SwipeCellKit
 
 class ProductsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
-
+    
     // MARK: Outlets
     
     @IBOutlet weak var products: UITableView!
@@ -77,7 +77,10 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return productsEstimate.count
+        if productsEstimate.count > 0 {
+            return productsEstimate.count
+        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -193,7 +196,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             let deleteAction = SwipeAction(style: .destructive, title: "Delete") {
                 action, indexPath in
                 productsEstimate.remove(at: indexPath.row)
-                action.fulfill(with: .delete)
+                action.fulfill(with: .reset)
                 self.calculateGrandTotal()
             }
             deleteAction.image = UIImage(named: "delete")
@@ -203,6 +206,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             
             let editAction = SwipeAction(style: .default, title: "Edit") {
                 action, indexPath in
+                self.performSegue(withIdentifier: "segueToAddProducts", sender: indexPath)
+                action.fulfill(with: .reset)
             }
             editAction.image = UIImage(named: "edit-white")
             editAction.backgroundColor = ColorConstants.buttonYellow
@@ -235,13 +240,21 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "segueToAddProducts" {
-            if let sender = sender as? UIButton {
-                if let destVC = segue.destination as? AddProductsViewController {
+            if let destVC = segue.destination as? AddProductsViewController {
+                if let sender = sender as? UIButton {
                     if sender.tag == 1 {
                         destVC.rowsCount = 1
+                        destVC.isMultipleAdd = false
                     } else {
                         destVC.rowsCount = 3
+                        destVC.isMultipleAdd = true
                     }
+                }
+                if let sender = sender as? IndexPath {
+                    destVC.selectedProductEstimate = productsEstimate[sender.row]
+                    destVC.selectedProductEstimateIndex = sender.row
+                    destVC.rowsCount = 1
+                    destVC.isMultipleAdd = false
                 }
             }
         }
