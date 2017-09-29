@@ -46,7 +46,7 @@ enum ProductCatTypeRaw: Int {
 }
 
 // Tax
-var tax = 8.25
+var tax: Float = 8.25
 var storageFee = 75
 
 // Work order types

@@ -30,7 +30,12 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: Internal variables
     
     let fontSize: CGFloat = 15.0
-    let data = ["Electrical", "Outdoor", "Yellow", "5", "300", "50", "150", "100"]
+    var firstYearGT: Float = 0
+    var firstYearDiscGT: Float = 0
+    var secondYearGT: Float = 0
+    var secondYearDiscGT: Float = 0
+    var totalQuantity: Int = 0
+    let formatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +61,12 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         let disclaimerAttributedString = NSMutableAttributedString(string: disclaimerOriginalString!)
         disclaimerAttributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: NSRange(location: 0, length: 10))
         disclaimer.attributedText = disclaimerAttributedString
+        
+        formatter.numberStyle = .currency
+        formatter.paddingPosition = .afterPrefix
+        formatter.allowsFloats = true
+        
+        calculateGrandTotal()
     }
     
     // MARK: TableView Delegate Functions
@@ -65,10 +76,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if productsEstimate.count == 0 {
-            return 1
-        }
         
         return productsEstimate.count
     }
@@ -140,11 +147,11 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.location.titleLabel?.font = UIFont.boldSystemFont(ofSize: fontSize)
         cell.location.addTarget(self, action: #selector(self.redirectToAddProduct), for: .touchUpInside)
         
-        cell.quantity.attributedText = NSMutableAttributedString(string: "Selected\n0")
-        cell.firstYearPrice.attributedText = NSMutableAttributedString(string: "\nXXXXX")
-        cell.firstYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "\nXXXXX")
-        cell.secondYearPrice.attributedText = NSMutableAttributedString(string: "\nXXXXX")
-        cell.secondYearDiscountedPrice.attributedText = NSMutableAttributedString(string: "\nXXXXX")
+        cell.quantity.attributedText = NSMutableAttributedString(string: "\(totalQuantity)")
+        cell.firstYearPrice.text = "\(firstYearGT)"
+        cell.firstYearDiscountedPrice.text = "\(firstYearDiscGT)"
+        cell.secondYearPrice.text = "\(secondYearGT)"
+        cell.secondYearDiscountedPrice.text = "\(secondYearDiscGT)"
         
         cell.backgroundColor = ColorConstants.bgGray
         return cell
@@ -181,23 +188,26 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") {
-            action, indexPath in
-            print("Delete Swiped")
-        }
-        deleteAction.image = UIImage(named: "delete")
-        
-        let editAction = SwipeAction(style: .default, title: "Edit") {
-            action, indexPath in
-            print("Delete Swiped")
-        }
-        editAction.image = UIImage(named: "edit-white")
-        editAction.backgroundColor = ColorConstants.buttonYellow
-        
         if orientation == .right {
+            
+            let deleteAction = SwipeAction(style: .destructive, title: "Delete") {
+                action, indexPath in
+                productsEstimate.remove(at: indexPath.row)
+                action.fulfill(with: .delete)
+                self.calculateGrandTotal()
+            }
+            deleteAction.image = UIImage(named: "delete")
             return [deleteAction]
+            
         } else {
+            
+            let editAction = SwipeAction(style: .default, title: "Edit") {
+                action, indexPath in
+            }
+            editAction.image = UIImage(named: "edit-white")
+            editAction.backgroundColor = ColorConstants.buttonYellow
             return [editAction]
+            
         }
     }
     
@@ -209,28 +219,15 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         return options
     }
     
-/*
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        updateFooterView()
-    }
+    // MARK: Actions
     
-    func updateFooterView() {
-        
-        let sectionFrame = products.rect(forSection: 0)
-        let bottomSpace = products.contentOffset.y + products.frame.height - sectionFrame.maxY
-        let footerRect = products.rectForFooter(inSection: 0)
-        let footerHeight = footerRect.height
-        let transformY = products.contentOffset.y + footerHeight - min(bottomSpace, footerHeight)
-        var local = footerRect
-        local.origin.y = products.bounds.size.height - footerRect.height + transformY
-        products.tableFooterView?.frame = footerRect
+    @IBAction func performDiscountSwitch(_ sender: UISwitch) {
+        calculateGrandTotal()
     }
-*/
-    
     // MARK: Unwind segues
     
     @IBAction func unwindSegueFromAddProducts(_ segue: UIStoryboardSegue) {
-        products.reloadData()
+        calculateGrandTotal()
     }
     
     // MARK: Navigation
@@ -255,5 +252,46 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     @objc func redirectToAddProduct(sender: UIButton) {
         
         self.performSegue(withIdentifier: "segueToAddProducts", sender: sender)
+    }
+    
+    func calculateGrandTotal(reload: Bool? = true) {
+        
+        var taxedAmount: Float = 0
+        var firstYearTotal: Float = 0
+        firstYearGT = 0
+        firstYearDiscGT = 0
+        secondYearGT = 0
+        secondYearDiscGT = 0
+        totalQuantity = 0
+        
+        formatter.currencyCode = "USD"
+        
+        for eachEstimate in productsEstimate {
+            firstYearGT += eachEstimate.firstYearPrice!
+            firstYearDiscGT += eachEstimate.firstYearDiscPrice!
+            secondYearGT += eachEstimate.secondYearPrice!
+            secondYearDiscGT += eachEstimate.secondYearDiscPrice!
+            totalQuantity += (eachEstimate.quantity?.intValue)!
+        }
+        
+        if discountSwitch.isOn {
+            firstYearTotal = firstYearDiscGT
+        } else {
+            firstYearTotal = firstYearGT
+        }
+        
+        taxedAmount = (firstYearTotal * (tax / 100))
+        finalSubTotal.text = formatter.string(for: firstYearTotal)
+        finalTax.text = formatter.string(for: taxedAmount)
+        firstYearGrandTotal.text = formatter.string(for: firstYearTotal + taxedAmount)
+        
+        secondYearTotalPrice.text = formatter.string(for: secondYearGT)
+        finalDiscountedPrice.text = formatter.string(for: secondYearDiscGT)
+        finalStorageFee.text = formatter.string(for: storageFee)
+        secondYearGrandTotal.text = formatter.string(for: (Float(secondYearDiscGT) + Float(storageFee)))
+        
+        if reload! {
+            products.reloadData()
+        }
     }
 }

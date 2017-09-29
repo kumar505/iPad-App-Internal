@@ -14,30 +14,30 @@ class ProductEstimateModel {
     var product: ProductModel?
     var color: ProductColorModel?
     var location: String?
-    var firstYearPrice: Double?
-    var firstYearDiscPrice: Double?
-    var secondYearPrice: Double?
-    var secondYearDiscPrice: Double?
+    var firstYearPrice: Float?
+    var firstYearDiscPrice: Float?
+    var secondYearPrice: Float?
+    var secondYearDiscPrice: Float?
     
-    func calculateFirstYearPrice() -> Double {
+    func calculateFirstYearPrice() -> Float {
         
         // Quantity multiplied by unit price
-        return ((self.product?.price)! * Double(truncating: self.quantity!))
+        return ((self.product?.price)! * Float(truncating: self.quantity!))
     }
     
-    func calculateFirstYearDiscPrice() -> Double {
+    func calculateFirstYearDiscPrice() -> Float {
         
         // 80% of the first year price
         return (self.firstYearPrice! * 0.8)
     }
     
-    func calculateSecondYearPrice() -> Double {
+    func calculateSecondYearPrice() -> Float {
         
         // 50% of the first year price
         return (self.firstYearPrice! * 0.5)
     }
     
-    func calculateSecondYearDiscPrice() -> Double {
+    func calculateSecondYearDiscPrice() -> Float {
         
         // 40% of the first year price
         return (self.firstYearPrice! * 0.4)

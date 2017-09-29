@@ -13,7 +13,7 @@ class ProductModel {
     var id: NSNumber?
     var name: String?
     var pullTicketName: String?
-    var price: Double?
+    var price: Float?
     var color: String?
     var location: String?
     var description: String?
@@ -35,7 +35,7 @@ class ProductModel {
                 product.pullTicketName = pullTicketName
             }
             
-            if let price = eachResponse.object(forKey: "Price") as? Double {
+            if let price = eachResponse.object(forKey: "Price") as? Float {
                 product.price = price
             } else {
                 product.price = 0

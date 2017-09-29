@@ -133,6 +133,13 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
             
             let deleteAction = SwipeAction(style: .destructive, title: "Delete") {
                 action, indexPath in
+                self.rowsCount -= 1
+                if indexPath.section <= self.internalProductEstimates.count && self.internalProductEstimates.count != 0 {
+                    self.internalProductEstimates.remove(at: indexPath.section)
+                }
+                let indexSet = IndexSet(integer: indexPath.section)
+                self.productLabels.deleteSections(indexSet, with: .automatic)
+                action.fulfill(with: .delete)
             }
             deleteAction.image = UIImage(named: "delete")
             
@@ -166,7 +173,11 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
             currentIndexPath = productLabels.indexPath(for: cell)
             let estimate = ProductEstimateModel()
             if internalProductEstimates.count <= (currentIndexPath?.section)! {
-                internalProductEstimates.insert(estimate, at: (currentIndexPath?.section)!)
+                if selectedProductEstimate != nil {
+                    internalProductEstimates.insert(selectedProductEstimate!, at: (currentIndexPath?.section)!)
+                } else {
+                    internalProductEstimates.insert(estimate, at: (currentIndexPath?.section)!)
+                }
             }
             if cell.selectProducts == textField {
                 performSegue(withIdentifier: "segueToPoductsDropDown", sender: cell)
