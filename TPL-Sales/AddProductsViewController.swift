@@ -275,18 +275,16 @@ class AddProductsViewController: UIViewController, UITableViewDelegate, UITableV
         if segue.identifier == "segueToPoductsDropDown" {
             if let destPC = segue.destination.popoverPresentationController, let sourceCell = sender as? AddProductsTableViewCell, let destVC = segue.destination as? ProductsDropDownTableViewController {
                 destVC.selectedProduct = self.selectedProduct
-                destPC.sourceView = sourceCell
-                destPC.sourceRect = sourceCell.selectProducts.bounds
+                destPC.sourceView = sourceCell.firstStack
+                destPC.sourceRect = sourceCell.selectProducts.frame
             }
         }
         
         if segue.identifier == "segueToColorDropDown" {
             if let destPC = segue.destination.popoverPresentationController, let sourceCell = sender as? AddProductsTableViewCell, let destVC = segue.destination as? ColorsDropDownTableViewController {
                 destVC.selectedColor = self.selectedColor
-                destPC.sourceView = sourceCell
-                destPC.sourceRect = sourceCell.selectColor.bounds
-                
-//                productLabels.rectForRow(at: productLabels.indexPath(for: sourceCell)!)
+                destPC.sourceView = sourceCell.secondStack
+                destPC.sourceRect = sourceCell.selectColor.frame
             }
         }
     }

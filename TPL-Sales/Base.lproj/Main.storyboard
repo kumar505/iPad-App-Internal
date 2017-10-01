@@ -268,7 +268,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf4-bR-Rbk">
-                                                    <rect key="frame" x="10" y="5" width="170" height="69.5"/>
+                                                    <rect key="frame" x="10" y="5" width="834" height="69.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                                     <color key="textColor" red="0.19215686274509802" green="0.40784313725490196" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -288,6 +288,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="q5a-6x-TCP" secondAttribute="trailing" constant="10" id="Daz-xh-pux"/>
                                                 <constraint firstAttribute="bottom" secondItem="q5a-6x-TCP" secondAttribute="bottom" constant="5" id="E86-lq-09G"/>
                                                 <constraint firstAttribute="bottom" secondItem="Lf4-bR-Rbk" secondAttribute="bottom" constant="5" id="FGx-Gn-PwE"/>
+                                                <constraint firstItem="q5a-6x-TCP" firstAttribute="leading" secondItem="Lf4-bR-Rbk" secondAttribute="trailing" constant="10" id="eOP-Ca-38G"/>
                                                 <constraint firstItem="q5a-6x-TCP" firstAttribute="top" secondItem="e36-ZM-l2R" secondAttribute="top" constant="5" id="eeT-Qy-blC"/>
                                                 <constraint firstItem="Lf4-bR-Rbk" firstAttribute="top" secondItem="e36-ZM-l2R" secondAttribute="top" constant="5" id="elY-Zi-ebj"/>
                                                 <constraint firstItem="Lf4-bR-Rbk" firstAttribute="leading" secondItem="e36-ZM-l2R" secondAttribute="leading" constant="10" id="ift-Iu-hVx"/>
@@ -752,19 +753,28 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvp-XY-jw1">
                                                                 <rect key="frame" x="0.0" y="372.5" width="412" height="72.5"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Discount valid until xx/xx/xxxx" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRW-Lq-8ZH">
-                                                                        <rect key="frame" x="10" y="-0.5" width="402" height="72.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Discount valid until" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRW-Lq-8ZH">
+                                                                        <rect key="frame" x="10" y="0.0" width="131.5" height="72"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <color key="textColor" red="0.37254901959999998" green="0.43529411759999997" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wCf-cJ-am1">
+                                                                        <rect key="frame" x="146.5" y="0.0" width="255.5" height="72.5"/>
+                                                                        <color key="textColor" red="0.37254901959999998" green="0.43529411759999997" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                    </textField>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
+                                                                    <constraint firstItem="wCf-cJ-am1" firstAttribute="top" secondItem="cvp-XY-jw1" secondAttribute="top" id="6AJ-4o-Al9"/>
                                                                     <constraint firstItem="hRW-Lq-8ZH" firstAttribute="top" secondItem="cvp-XY-jw1" secondAttribute="top" id="B27-Ia-0JC"/>
                                                                     <constraint firstItem="hRW-Lq-8ZH" firstAttribute="leading" secondItem="cvp-XY-jw1" secondAttribute="leading" constant="10" id="FYT-em-KfK"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="wCf-cJ-am1" secondAttribute="bottom" id="bH3-aS-PCQ"/>
                                                                     <constraint firstAttribute="bottom" secondItem="hRW-Lq-8ZH" secondAttribute="bottom" id="e2i-qV-cgH"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="hRW-Lq-8ZH" secondAttribute="trailing" id="xTe-nd-dP9"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="wCf-cJ-am1" secondAttribute="trailing" constant="10" id="mqR-NG-N96"/>
+                                                                    <constraint firstItem="wCf-cJ-am1" firstAttribute="leading" secondItem="hRW-Lq-8ZH" secondAttribute="trailing" constant="5" id="v6h-E2-TNx"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
@@ -1053,6 +1063,7 @@
                         <outlet property="discountExpiryLabel" destination="hRW-Lq-8ZH" id="Dvk-TI-hN5"/>
                         <outlet property="discountLabel" destination="Hrm-sw-Rcg" id="zfb-un-IvB"/>
                         <outlet property="discountSwitch" destination="c3Q-Hi-pct" id="DBm-90-aNU"/>
+                        <outlet property="expiryDate" destination="wCf-cJ-am1" id="U7F-or-AYs"/>
                         <outlet property="finalDiscountedPrice" destination="Rpw-iC-Ty7" id="VRl-bK-fE0"/>
                         <outlet property="finalStorageFee" destination="frh-3K-6zx" id="UWB-UY-X98"/>
                         <outlet property="finalSubTotal" destination="6x6-RR-uUV" id="Xy3-nJ-Hxc"/>

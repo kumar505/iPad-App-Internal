@@ -26,6 +26,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var secondYearGrandTotal: UILabel!
     @IBOutlet weak var disclaimer: UILabel!
     @IBOutlet weak var pendingSale: UISwitch!
+    @IBOutlet weak var expiryDate: UITextField!
     
     // MARK: Internal variables
     
@@ -36,6 +37,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     var secondYearDiscGT: Float = 0
     var totalQuantity: Int = 0
     let formatter = NumberFormatter()
+    let datePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +67,10 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         formatter.numberStyle = .currency
         formatter.paddingPosition = .afterPrefix
         formatter.allowsFloats = true
+        
+        expiryDate.addRightView(imageName: "calendar")
+        expiryDate.text = formatDate(date: Date())
+        showDatePicker(textField: expiryDate)
         
         calculateGrandTotal()
     }
@@ -306,5 +312,33 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         if reload! {
             products.reloadData()
         }
+    }
+    
+    func showDatePicker(textField: UITextField?) {
+        
+        datePicker.datePickerMode = .date
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        toolbar.barStyle = .default
+        toolbar.isTranslucent = true
+        toolbar.tintColor = ColorConstants.barBlue
+        
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelDatePicker(_:)))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let done = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneDatePicker(_:)))
+        
+        toolbar.setItems([cancel, flexibleSpace, done], animated: true)
+        textField?.inputAccessoryView = toolbar
+        textField?.inputView = datePicker
+    }
+    
+    @objc func doneDatePicker(_ sender: UIBarButtonItem) {
+        expiryDate.text = formatDate(date: datePicker.date)
+        expiryDate.resignFirstResponder()
+    }
+    
+    @objc func cancelDatePicker(_ sender: UIBarButtonItem) {
+        expiryDate.resignFirstResponder()
     }
 }
