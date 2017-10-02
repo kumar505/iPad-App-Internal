@@ -14,10 +14,10 @@ class InstallOptionViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var options: UITableView!
     @IBOutlet weak var selectedOptionView: UIView!
-    @IBOutlet weak var startDate: UILabel!
-    @IBOutlet weak var startDateSelector: UITextField!
-    @IBOutlet weak var endDate: UILabel!
-    @IBOutlet weak var endDateSelector: UITextField!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var timeSelector: UITextField!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var dateSelector: UITextField!
     
     // MARK: Internal variables
     
@@ -31,17 +31,22 @@ class InstallOptionViewController: UIViewController, UITableViewDelegate, UITabl
         "Full Second Half Only",
         "Full Specific Date Without Discount"
     ]
+    let datePicker = UIDatePicker()
+    let timePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.selectedOptionView.borderWidth = 0.5
-        self.selectedOptionView.borderColor = UIColor.lightGray
+        selectedOptionView.borderWidth = 0.5
+        selectedOptionView.borderColor = UIColor.lightGray
         
-        self.selectedOptionView.isHidden = true
+        selectedOptionView.isHidden = true
         
-        self.startDateSelector.addRightView(imageName: "calender-time")
-        self.endDateSelector.addRightView(imageName: "calender-time")
+        timeSelector.addRightView(imageName: "calender-time")
+        dateSelector.addRightView(imageName: "calendar")
+        
+        showTimePicker(textField: timeSelector)
+        showDatePicker(textField: dateSelector)
     }
     
     // MARK: Tableview delegate functions
@@ -85,13 +90,23 @@ class InstallOptionViewController: UIViewController, UITableViewDelegate, UITabl
         cell.selectOption.setImage(UIImage(named: "select-active"), for: .normal)
         
         if (cell.option.text?.contains("Full Specific Date"))! {
-            self.selectedOptionView.isHidden = false
-            self.endDate.isHidden = true
-            self.endDateSelector.isHidden = true
+            selectedOptionView.isHidden = false
+            time.isHidden = true
+            timeSelector.isHidden = true
+            date.isHidden = false
+            dateSelector.isHidden = false
         } else if (cell.option.text?.contains("2 Part With Specific Date"))! {
-            self.selectedOptionView.isHidden = false
-            self.endDate.isHidden = false
-            self.endDateSelector.isHidden = false
+            selectedOptionView.isHidden = false
+            time.isHidden = false
+            timeSelector.isHidden = false
+            date.isHidden = false
+            dateSelector.isHidden = false
+        } else {
+            selectedOptionView.isHidden = false
+            date.isHidden = true
+            dateSelector.isHidden = true
+            time.isHidden = false
+            timeSelector.isHidden = false
         }
     }
     
@@ -101,5 +116,69 @@ class InstallOptionViewController: UIViewController, UITableViewDelegate, UITabl
         cell.selectOption.setImage(UIImage(named: "select-inactive"), for: .normal)
         
         self.selectedOptionView.isHidden = true
+    }
+    
+    // MARK: Internal functions
+    
+    func showDatePicker(textField: UITextField?) {
+        
+        datePicker.datePickerMode = .date
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        toolbar.barStyle = .default
+        toolbar.isTranslucent = true
+        toolbar.tintColor = ColorConstants.barBlue
+        
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelDatePicker(_:)))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let done = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneDatePicker(_:)))
+        
+        toolbar.setItems([cancel, flexibleSpace, done], animated: true)
+        textField?.inputAccessoryView = toolbar
+        textField?.inputView = datePicker
+    }
+    
+    func showTimePicker(textField: UITextField?) {
+        
+        timePicker.datePickerMode = .time
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        toolbar.barStyle = .default
+        toolbar.isTranslucent = true
+        toolbar.tintColor = ColorConstants.barBlue
+        
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelTimePicker(_:)))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let done = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneTimePicker(_:)))
+        
+        toolbar.setItems([cancel, flexibleSpace, done], animated: true)
+        textField?.inputAccessoryView = toolbar
+        textField?.inputView = timePicker
+    }
+    
+    @objc func doneDatePicker(_ sender: UIBarButtonItem) {
+        dateSelector.text = formatDate(date: datePicker.date)
+        dateSelector.resignFirstResponder()
+    }
+    
+    @objc func cancelDatePicker(_ sender: UIBarButtonItem) {
+        dateSelector.resignFirstResponder()
+    }
+    
+    @objc func doneTimePicker(_ sender: UIBarButtonItem) {
+       
+        let calendar = Calendar.current
+        let comp = calendar.dateComponents([.hour, .minute], from: timePicker.date)
+        let hour = comp.hour
+        let minute = comp.minute
+        
+        timeSelector.text = "\(String(describing: hour!)):\(String(describing: minute!))"
+        timeSelector.resignFirstResponder()
+    }
+    
+    @objc func cancelTimePicker(_ sender: UIBarButtonItem) {
+        timeSelector.resignFirstResponder()
     }
 }

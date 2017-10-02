@@ -1361,14 +1361,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CpT-3G-U6Y">
                                 <rect key="frame" x="40" y="1148" width="944" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG4-Mk-B2W">
-                                        <rect key="frame" x="40" y="10" width="36" height="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG4-Mk-B2W">
+                                        <rect key="frame" x="40" y="10" width="38" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WmH-Th-sN4">
-                                        <rect key="frame" x="81" y="10" width="250" height="40"/>
+                                        <rect key="frame" x="83" y="10" width="250" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="tvn-ur-Z0r"/>
                                         </constraints>
@@ -1433,12 +1433,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="endDate" destination="zyA-tM-HSj" id="ApH-DV-VZu"/>
-                        <outlet property="endDateSelector" destination="du1-T4-DnX" id="Dmh-Yu-bBU"/>
+                        <outlet property="date" destination="zyA-tM-HSj" id="WgS-Hg-Utp"/>
+                        <outlet property="dateSelector" destination="du1-T4-DnX" id="cIq-OT-F4e"/>
                         <outlet property="options" destination="NeE-vW-3rj" id="iPZ-oA-ysf"/>
                         <outlet property="selectedOptionView" destination="CpT-3G-U6Y" id="uDu-Lh-jTJ"/>
-                        <outlet property="startDate" destination="BG4-Mk-B2W" id="SBV-UI-pam"/>
-                        <outlet property="startDateSelector" destination="WmH-Th-sN4" id="ra0-fP-LSH"/>
+                        <outlet property="time" destination="BG4-Mk-B2W" id="gjr-9A-hCP"/>
+                        <outlet property="timeSelector" destination="WmH-Th-sN4" id="8Ak-3U-q3L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyA-yX-yaD" userLabel="First Responder" sceneMemberID="firstResponder"/>
