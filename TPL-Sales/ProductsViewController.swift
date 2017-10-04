@@ -9,7 +9,7 @@
 import UIKit
 import SwipeCellKit
 
-class ProductsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
+class ProductsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SwipeTableViewCellDelegate {
     
     // MARK: Outlets
     
@@ -38,6 +38,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     var totalQuantity: Int = 0
     let formatter = NumberFormatter()
     let datePicker = UIDatePicker()
+    let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +74,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         showDatePicker(textField: expiryDate)
         
         calculateGrandTotal()
+        
+        imagePicker.delegate = self
     }
     
     // MARK: TableView Delegate Functions
@@ -174,6 +177,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             let estimate = productsEstimate[indexPath.row]
             cell.delegate = self
             cell.gallery.setImage(UIImage(named: "camera-blue-1"), for: .normal)
+            cell.gallery.addTarget(self, action: #selector(self.openLibrary), for: .touchUpInside)
             cell.productName.setTitle(estimate.product?.name, for: .normal)
             cell.location.setTitle(estimate.location, for: .normal)
             cell.color.text = estimate.color?.name
@@ -228,6 +232,18 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         options.expansionStyle = .destructive
         options.transitionStyle = .border
         return options
+    }
+    
+    // MARK: Image picker delegate functions
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: Actions
@@ -341,4 +357,15 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     @objc func cancelDatePicker(_ sender: UIBarButtonItem) {
         expiryDate.resignFirstResponder()
     }
+    
+    @objc func openLibrary() {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .photoLibrary
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+
 }

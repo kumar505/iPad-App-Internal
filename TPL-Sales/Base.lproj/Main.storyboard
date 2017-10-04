@@ -1817,6 +1817,9 @@
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eao-kY-amh">
                                                         <rect key="frame" x="146" y="0.0" width="51" height="35"/>
+                                                        <connections>
+                                                            <action selector="isSendToCustomer:" destination="Hf5-BR-csb" eventType="valueChanged" id="skR-9q-fhA"/>
+                                                        </connections>
                                                     </switch>
                                                 </subviews>
                                                 <constraints>
@@ -1849,6 +1852,9 @@
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="performPDF:" destination="Hf5-BR-csb" eventType="touchUpInside" id="eBd-4v-01y"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8EU-hv-xiG">
                                                 <rect key="frame" x="0.0" y="65.5" width="381.5" height="35"/>
@@ -2125,9 +2131,10 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="40" id="F5e-3V-8yM"/>
                                                         </constraints>
-                                                        <state key="normal" image="select-inactive.png">
-                                                            <color key="titleColor" red="0.1927371621" green="0.3979011476" blue="0.60447853799999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        </state>
+                                                        <state key="normal" image="checkbox-inactive.png"/>
+                                                        <connections>
+                                                            <action selector="performAuthorization:" destination="Hf5-BR-csb" eventType="touchUpInside" id="Sm7-Gs-Kln"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I Authorize The Perfect Light to receive the payment for this aggrement" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LVo-JB-Yi4">
                                                         <rect key="frame" x="50" y="0.0" width="483.5" height="40"/>
@@ -2222,16 +2229,23 @@ Important notice: You and your contractor are responsible for meeting the terms 
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="authorizationDesc" destination="8gE-Xc-D7P" id="9wY-BL-wDW"/>
+                        <outlet property="authorize" destination="JWB-eh-rvc" id="H8m-VX-DFF"/>
                         <outlet property="balanceDue" destination="vdp-lY-b2O" id="ouE-cH-0hf"/>
                         <outlet property="cashPayment" destination="8Ou-zS-fhd" id="jwv-wQ-fTU"/>
                         <outlet property="chequePayment" destination="QNz-J8-ap9" id="j1U-Ne-OLG"/>
                         <outlet property="creditCard" destination="x5a-Qh-spl" id="Sii-w9-PPi"/>
+                        <outlet property="employeesList" destination="h2h-L2-73u" id="xwl-gl-2JB"/>
                         <outlet property="grandTotal" destination="vCu-qq-AVg" id="NLx-g4-Hv9"/>
                         <outlet property="paymentAmount" destination="alZ-R8-me2" id="9QV-Ts-8Cc"/>
                         <outlet property="paymentField1" destination="A52-gY-NG2" id="1jQ-Lv-dSm"/>
                         <outlet property="paymentField2" destination="Vd6-UK-wb3" id="cnk-Cl-0G3"/>
                         <outlet property="paymentField3" destination="Rp0-M4-wLI" id="Rxi-tU-T2Z"/>
                         <outlet property="paymentStackView" destination="fz1-Qi-nsR" id="G0q-49-AGu"/>
+                        <outlet property="previouslyPaid" destination="Ueb-AF-cAk" id="gXX-NF-08K"/>
+                        <outlet property="sendToCustomer" destination="eao-kY-amh" id="3kS-AR-3jo"/>
+                        <outlet property="signature" destination="doJ-Cy-cWu" id="Qhy-NS-FTW"/>
+                        <outlet property="viewPDF" destination="uNF-lI-odX" id="ERH-3Z-urS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5W-sO-0LH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2267,6 +2281,7 @@ Important notice: You and your contractor are responsible for meeting the terms 
         <image name="camera-gray.png" width="26" height="18"/>
         <image name="cancel.png" width="13" height="13"/>
         <image name="cash-inactive.png" width="42" height="41"/>
+        <image name="checkbox-inactive.png" width="13" height="13"/>
         <image name="cheque-inactive.png" width="83" height="40"/>
         <image name="creditcard-inactive.png" width="61" height="38"/>
         <image name="downarrow.png" width="7" height="6"/>

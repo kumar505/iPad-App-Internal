@@ -27,12 +27,6 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         pageController.delegate = self
         pageController.dataSource = self
         
-        getWorkOrderTypes()
-        getProductColors()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
         self.navigationController?.formatUI()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -48,13 +42,12 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
         menuSegment.isUserInteractionEnabled = false
         menuSegment.tintColor = UIColor.white
         menuSegment.backgroundColor = ColorConstants.barBlue
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         
         prepareInitialMenu()
+        getWorkOrderTypes()
+        getProductColors()
     }
-
+    
     override func viewDidLayoutSubviews() {
         
         // Set right bar button item

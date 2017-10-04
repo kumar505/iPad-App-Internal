@@ -15,7 +15,7 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var grandTotal: UILabel!
     @IBOutlet weak var paymentAmount: UITextField!
     @IBOutlet weak var balanceDue: UILabel!
-    @IBOutlet weak var payNow: UIButton!
+    @IBOutlet weak var viewPDF: UIButton!
     @IBOutlet weak var creditCard: UIButton!
     @IBOutlet weak var chequePayment: UIButton!
     @IBOutlet weak var cashPayment: UIButton!
@@ -23,16 +23,40 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var paymentField2: UITextField!
     @IBOutlet weak var paymentField3: UITextView!
     @IBOutlet weak var paymentStackView: UIStackView!
+    @IBOutlet weak var sendToCustomer: UISwitch!
+    @IBOutlet weak var previouslyPaid: UILabel!
+    @IBOutlet weak var employeesList: UITextField!
+    @IBOutlet weak var authorize: UIButton!
+    @IBOutlet weak var signature: UITextView!
+    @IBOutlet weak var authorizationDesc: UITextView!
+    
+    // MARK: Internal variables
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        employeesList.addRightView(imageName: "downarrow", widthPadding: 20)
 
         performCreditCard(creditCard)
     }
     
     // MARK: Actions
     
-    @IBAction func performPayNow(_ sender: UIButton) {
+    @IBAction func performPDF(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func performAuthorization(_ sender: UIButton) {
+        
+        if authorize.currentImage == UIImage(named: "checkbox-active") {
+            authorize.setImage(UIImage(named: "checkbox-inactive"), for: .normal)
+        } else {
+            authorize.setImage(UIImage(named: "checkbox-active"), for: .normal)
+        }
+    }
+    
+    @IBAction func isSendToCustomer(_ sender: UISwitch) {
+    
     }
     
     @IBAction func performCreditCard(_ sender: UIButton) {
