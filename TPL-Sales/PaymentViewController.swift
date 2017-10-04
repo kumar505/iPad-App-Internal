@@ -31,6 +31,7 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var authorizationDesc: UITextView!
     
     // MARK: Internal variables
+    var isAuthorized = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +49,12 @@ class PaymentViewController: UIViewController {
     
     @IBAction func performAuthorization(_ sender: UIButton) {
         
-        if authorize.currentImage == UIImage(named: "checkbox-active") {
+        if isAuthorized {
             authorize.setImage(UIImage(named: "checkbox-inactive"), for: .normal)
+            isAuthorized = false
         } else {
             authorize.setImage(UIImage(named: "checkbox-active"), for: .normal)
+            isAuthorized = true
         }
     }
     
