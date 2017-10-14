@@ -89,7 +89,7 @@ class PaymentViewController: UIViewController {
     
     func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
         
-        UIGraphicsBeginImageContext(signatureView.frame.size)
+        UIGraphicsBeginImageContextWithOptions(signatureView.frame.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()
         signatureTempImage.image?.draw(in: CGRect(x: 0, y: 0, width: signatureView.frame.size.width, height: signatureView.frame.size.height))
         
