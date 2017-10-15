@@ -18,6 +18,7 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
     
     var pages = [UIViewController]()
     var pageController: UIPageViewController!
+    var isScrollable = true
     private var currentIndex: Int?
     private var pendingIndex: Int?
     
@@ -73,22 +74,30 @@ class WorkEstimateViewController: UIViewController, UITextFieldDelegate, UIToolb
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        let currentIndex = pages.index(of: viewController)!
-        if currentIndex == 0 {
-            return nil
+        if isScrollable {
+            let currentIndex = pages.index(of: viewController)!
+            if currentIndex == 0 {
+                return nil
+            }
+            let previousIndex = abs((currentIndex - 1) % pages.count)
+            return pages[previousIndex]
         }
-        let previousIndex = abs((currentIndex - 1) % pages.count)
-        return pages[previousIndex]
+        
+        return nil
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        let currentIndex = pages.index(of: viewController)!
-        if currentIndex == pages.count - 1 {
-            return nil
+        if isScrollable {
+            let currentIndex = pages.index(of: viewController)!
+            if currentIndex == pages.count - 1 {
+                return nil
+            }
+            let nextIndex = abs((currentIndex + 1) % pages.count)
+            return pages[nextIndex]
         }
-        let nextIndex = abs((currentIndex + 1) % pages.count)
-        return pages[nextIndex]
+        
+        return nil
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {

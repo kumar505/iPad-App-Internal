@@ -2110,6 +2110,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="3cc-2i-rBa"/>
                                             <constraint firstItem="h2h-L2-73u" firstAttribute="leading" secondItem="z3W-la-kb7" secondAttribute="trailing" constant="5" id="4D9-cL-Oen"/>
                                             <constraint firstAttribute="bottom" secondItem="h2h-L2-73u" secondAttribute="bottom" constant="5" id="Owx-g0-pDb"/>
                                             <constraint firstItem="h2h-L2-73u" firstAttribute="top" secondItem="HP7-k2-bkB" secondAttribute="top" constant="5" id="Rf0-5e-EkN"/>
@@ -2181,60 +2182,28 @@ Important notice: You and your contractor are responsible for meeting the terms 
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vD-Cw-yQH">
                                         <rect key="frame" x="548.5" y="50" width="430.5" height="524"/>
                                         <subviews>
-                                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2A-cE-QgP">
-                                                <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
-                                                <items>
-                                                    <barButtonItem title="Reset" id="WDt-3T-Rff">
-                                                        <connections>
-                                                            <action selector="performSignatureReset:" destination="Hf5-BR-csb" id="Haz-k3-043"/>
-                                                        </connections>
-                                                    </barButtonItem>
-                                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sks-aP-3Zs"/>
-                                                    <barButtonItem title="Signature" id="3TF-XG-h29">
-                                                        <color key="tintColor" red="0.37254901959999998" green="0.43529411759999997" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    </barButtonItem>
-                                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="8VI-YF-ll7"/>
-                                                    <barButtonItem title="Done" id="EA2-lO-Vtt">
-                                                        <connections>
-                                                            <action selector="performSignatureDone:" destination="Hf5-BR-csb" id="TtV-S7-dv9"/>
-                                                        </connections>
-                                                    </barButtonItem>
-                                                </items>
-                                            </toolbar>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nm5-IS-igL">
-                                                <rect key="frame" x="0.0" y="44" width="430.5" height="480"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7xf-zG-s3b">
-                                                        <rect key="frame" x="0.0" y="0.0" width="430.5" height="480"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2pf-De-BTl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="430.5" height="480"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bY3-O6-HYa">
+                                                <rect key="frame" x="10" y="0.0" width="420.5" height="40"/>
                                                 <constraints>
-                                                    <constraint firstItem="7xf-zG-s3b" firstAttribute="leading" secondItem="Nm5-IS-igL" secondAttribute="leading" id="1x8-Cp-1kp"/>
-                                                    <constraint firstItem="2pf-De-BTl" firstAttribute="height" secondItem="7xf-zG-s3b" secondAttribute="height" id="EM6-qJ-X0w"/>
-                                                    <constraint firstItem="2pf-De-BTl" firstAttribute="top" secondItem="7xf-zG-s3b" secondAttribute="top" id="GbK-p2-11s"/>
-                                                    <constraint firstItem="2pf-De-BTl" firstAttribute="leading" secondItem="7xf-zG-s3b" secondAttribute="leading" id="Mwh-3h-PLo"/>
-                                                    <constraint firstItem="2pf-De-BTl" firstAttribute="trailing" secondItem="7xf-zG-s3b" secondAttribute="trailing" id="Odb-c1-Edh"/>
-                                                    <constraint firstItem="2pf-De-BTl" firstAttribute="bottom" secondItem="7xf-zG-s3b" secondAttribute="bottom" id="Svh-tv-qET"/>
-                                                    <constraint firstAttribute="bottom" secondItem="7xf-zG-s3b" secondAttribute="bottom" id="iG4-fZ-J0g"/>
-                                                    <constraint firstAttribute="trailing" secondItem="7xf-zG-s3b" secondAttribute="trailing" id="kC0-aj-R5v"/>
-                                                    <constraint firstItem="7xf-zG-s3b" firstAttribute="top" secondItem="Nm5-IS-igL" secondAttribute="top" id="moH-eG-WxQ"/>
-                                                    <constraint firstItem="2pf-De-BTl" firstAttribute="width" secondItem="7xf-zG-s3b" secondAttribute="width" id="tRI-WN-ooJ"/>
+                                                    <constraint firstAttribute="height" constant="40" id="QS2-cl-T4T"/>
                                                 </constraints>
-                                            </view>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.37254901959999998" green="0.43529411759999997" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7xf-zG-s3b">
+                                                <rect key="frame" x="0.0" y="40" width="430.5" height="484"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="Nm5-IS-igL" secondAttribute="bottom" id="46t-2s-tDX"/>
-                                            <constraint firstItem="Nm5-IS-igL" firstAttribute="top" secondItem="i2A-cE-QgP" secondAttribute="bottom" id="Erc-lh-bND"/>
-                                            <constraint firstItem="Nm5-IS-igL" firstAttribute="leading" secondItem="8vD-Cw-yQH" secondAttribute="leading" id="R4b-g0-Zc5"/>
-                                            <constraint firstItem="i2A-cE-QgP" firstAttribute="leading" secondItem="8vD-Cw-yQH" secondAttribute="leading" id="RSD-gh-4Um"/>
-                                            <constraint firstItem="i2A-cE-QgP" firstAttribute="top" secondItem="8vD-Cw-yQH" secondAttribute="top" id="YpE-An-1ar"/>
-                                            <constraint firstAttribute="trailing" secondItem="i2A-cE-QgP" secondAttribute="trailing" id="sIf-bC-UXd"/>
-                                            <constraint firstAttribute="trailing" secondItem="Nm5-IS-igL" secondAttribute="trailing" id="xoU-D4-Za8"/>
+                                            <constraint firstItem="bY3-O6-HYa" firstAttribute="top" secondItem="8vD-Cw-yQH" secondAttribute="top" id="5sX-fr-YX8"/>
+                                            <constraint firstItem="7xf-zG-s3b" firstAttribute="top" secondItem="bY3-O6-HYa" secondAttribute="bottom" id="J8z-3H-jbZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="7xf-zG-s3b" secondAttribute="bottom" id="WfB-gh-edZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="7xf-zG-s3b" secondAttribute="trailing" id="XKR-5t-Yoj"/>
+                                            <constraint firstAttribute="trailing" secondItem="bY3-O6-HYa" secondAttribute="trailing" id="cOl-Y6-hhf"/>
+                                            <constraint firstItem="bY3-O6-HYa" firstAttribute="leading" secondItem="8vD-Cw-yQH" secondAttribute="leading" constant="10" id="hTh-ON-eeT"/>
+                                            <constraint firstItem="7xf-zG-s3b" firstAttribute="leading" secondItem="8vD-Cw-yQH" secondAttribute="leading" id="zhF-pq-dsa"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2284,19 +2253,144 @@ Important notice: You and your contractor are responsible for meeting the terms 
                         <outlet property="paymentStackView" destination="fz1-Qi-nsR" id="G0q-49-AGu"/>
                         <outlet property="previouslyPaid" destination="Ueb-AF-cAk" id="gXX-NF-08K"/>
                         <outlet property="sendToCustomer" destination="eao-kY-amh" id="3kS-AR-3jo"/>
-                        <outlet property="signatureDone" destination="EA2-lO-Vtt" id="kdc-Xb-nkG"/>
                         <outlet property="signatureMainImage" destination="7xf-zG-s3b" id="BrS-Tf-o3a"/>
-                        <outlet property="signatureReset" destination="WDt-3T-Rff" id="1IO-of-16T"/>
-                        <outlet property="signatureTempImage" destination="2pf-De-BTl" id="j5N-8K-RAw"/>
-                        <outlet property="signatureTitle" destination="3TF-XG-h29" id="miV-wd-oAr"/>
-                        <outlet property="signatureToolBar" destination="i2A-cE-QgP" id="Ra1-G8-PLQ"/>
-                        <outlet property="signatureView" destination="Nm5-IS-igL" id="PN3-gO-C66"/>
+                        <outlet property="signatureTitle" destination="bY3-O6-HYa" id="5ZW-49-Tkb"/>
                         <outlet property="viewPDF" destination="uNF-lI-odX" id="ERH-3Z-urS"/>
+                        <segue destination="glH-ig-3Di" kind="popoverPresentation" identifier="segueToEmailDropDown" popoverAnchorView="h2h-L2-73u" id="MuV-W9-ziL">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                        <segue destination="l9E-bK-Zc3" kind="presentation" identifier="segueToSignaturePad" modalPresentationStyle="formSheet" id="R0J-7j-CcE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5W-sO-0LH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="347.4609375" y="3635.5783308931182"/>
+        </scene>
+        <!--Email Drop Down Table View Controller-->
+        <scene sceneID="jh9-fn-BvF">
+            <objects>
+                <tableViewController id="glH-ig-3Di" customClass="EmailDropDownTableViewController" customModule="TPL_Sales" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AgA-Ky-Wk0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="emailDropDownListCell" id="T7o-1R-Sq3">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T7o-1R-Sq3" id="Ezo-oE-dMT">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="glH-ig-3Di" id="zbA-xr-4iO"/>
+                            <outlet property="delegate" destination="glH-ig-3Di" id="xbs-O2-Yve"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sqw-6w-pdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32" y="4241"/>
+        </scene>
+        <!--Signature Pad View Controller-->
+        <scene sceneID="jya-zY-0J2">
+            <objects>
+                <viewController id="l9E-bK-Zc3" customClass="SignaturePadViewController" customModule="TPL_Sales" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V1o-PK-ltE"/>
+                        <viewControllerLayoutGuide type="bottom" id="F8U-Lv-XXG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iYO-Z0-YsD">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jWP-5K-7wP">
+                                <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
+                                <items>
+                                    <navigationItem title="Signature pad" id="Wum-a6-Mx6">
+                                        <barButtonItem key="rightBarButtonItem" image="cancel.png" id="W7v-HQ-Eln">
+                                            <connections>
+                                                <action selector="performSignatureCancel:" destination="l9E-bK-Zc3" id="Dn3-8m-w7B"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0X-V7-ESr">
+                                <rect key="frame" x="0.0" y="44" width="540" height="532"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tdo-xp-dZJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="540" height="532"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JWk-tX-cHF">
+                                        <rect key="frame" x="0.0" y="0.0" width="540" height="532"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="JWk-tX-cHF" firstAttribute="width" secondItem="Tdo-xp-dZJ" secondAttribute="width" id="7fJ-b3-B84"/>
+                                    <constraint firstItem="JWk-tX-cHF" firstAttribute="height" secondItem="Tdo-xp-dZJ" secondAttribute="height" id="JHG-jP-MhS"/>
+                                    <constraint firstItem="Tdo-xp-dZJ" firstAttribute="height" secondItem="I0X-V7-ESr" secondAttribute="height" id="Lt8-Yx-JJV"/>
+                                    <constraint firstItem="JWk-tX-cHF" firstAttribute="trailing" secondItem="Tdo-xp-dZJ" secondAttribute="trailing" id="MWu-BE-yoE"/>
+                                    <constraint firstItem="Tdo-xp-dZJ" firstAttribute="top" secondItem="I0X-V7-ESr" secondAttribute="top" id="OqV-nO-D6Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tdo-xp-dZJ" secondAttribute="trailing" id="g2C-Gi-2OK"/>
+                                    <constraint firstItem="JWk-tX-cHF" firstAttribute="bottom" secondItem="Tdo-xp-dZJ" secondAttribute="bottom" id="iPo-1i-peF"/>
+                                    <constraint firstItem="Tdo-xp-dZJ" firstAttribute="width" secondItem="I0X-V7-ESr" secondAttribute="width" id="jaX-2V-B22"/>
+                                    <constraint firstItem="JWk-tX-cHF" firstAttribute="leading" secondItem="Tdo-xp-dZJ" secondAttribute="leading" id="nJx-At-vwP"/>
+                                    <constraint firstItem="JWk-tX-cHF" firstAttribute="top" secondItem="Tdo-xp-dZJ" secondAttribute="top" id="tEk-WT-Ovw"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjG-je-hBP">
+                                <rect key="frame" x="0.0" y="576" width="540" height="44"/>
+                                <items>
+                                    <barButtonItem title="Reset" id="nvG-2e-C5g">
+                                        <color key="tintColor" red="0.1927371621" green="0.3979011476" blue="0.60447853799999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <action selector="performSignatureReset:" destination="l9E-bK-Zc3" id="yCr-ax-bhc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="F1Q-xe-1ei"/>
+                                    <barButtonItem title="Save" id="ayJ-8G-hwm">
+                                        <color key="tintColor" red="0.1927371621" green="0.3979011476" blue="0.60447853799999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <action selector="performSignatureDone:" destination="l9E-bK-Zc3" id="aW1-tC-8A4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jWP-5K-7wP" firstAttribute="leading" secondItem="iYO-Z0-YsD" secondAttribute="leading" id="CVO-eJ-quT"/>
+                            <constraint firstItem="jjG-je-hBP" firstAttribute="leading" secondItem="iYO-Z0-YsD" secondAttribute="leading" id="H29-ab-m2f"/>
+                            <constraint firstItem="jWP-5K-7wP" firstAttribute="top" secondItem="iYO-Z0-YsD" secondAttribute="top" id="KfQ-gp-Cez"/>
+                            <constraint firstAttribute="trailing" secondItem="I0X-V7-ESr" secondAttribute="trailing" id="NH2-5u-DKc"/>
+                            <constraint firstItem="F8U-Lv-XXG" firstAttribute="top" secondItem="jjG-je-hBP" secondAttribute="bottom" id="Y1L-Le-NYb"/>
+                            <constraint firstItem="I0X-V7-ESr" firstAttribute="leading" secondItem="iYO-Z0-YsD" secondAttribute="leading" id="aDk-WP-AsK"/>
+                            <constraint firstItem="I0X-V7-ESr" firstAttribute="top" secondItem="jWP-5K-7wP" secondAttribute="bottom" id="aZj-xi-J9I"/>
+                            <constraint firstAttribute="trailing" secondItem="jjG-je-hBP" secondAttribute="trailing" id="hEe-Wu-XQK"/>
+                            <constraint firstItem="jjG-je-hBP" firstAttribute="top" secondItem="I0X-V7-ESr" secondAttribute="bottom" id="tTt-uj-MOl"/>
+                            <constraint firstAttribute="trailing" secondItem="jWP-5K-7wP" secondAttribute="trailing" id="vGL-cx-HB4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="signatureCancel" destination="W7v-HQ-Eln" id="tV8-kD-tvx"/>
+                        <outlet property="signatureDone" destination="ayJ-8G-hwm" id="HFJ-eb-L2W"/>
+                        <outlet property="signatureMainImage" destination="JWk-tX-cHF" id="Tlb-78-T5f"/>
+                        <outlet property="signatureNavBar" destination="jWP-5K-7wP" id="TZ9-WO-jOY"/>
+                        <outlet property="signatureReset" destination="nvG-2e-C5g" id="bvr-23-1HN"/>
+                        <outlet property="signatureTempImage" destination="Tdo-xp-dZJ" id="jTH-Ke-Ou0"/>
+                        <outlet property="signatureToolBar" destination="jjG-je-hBP" id="iBL-8J-FQ4"/>
+                        <outlet property="signatureView" destination="I0X-V7-ESr" id="F7q-9F-oJa"/>
+                        <segue destination="PoV-tm-2Op" kind="unwind" identifier="unwindWithSignaturePad" unwindAction="unwindSegueFromSignaturePad:" id="1FX-aN-nzl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QpT-0r-FKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="PoV-tm-2Op" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="718" y="4241"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6gI-83-LUQ">
